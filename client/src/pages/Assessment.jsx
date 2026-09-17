@@ -10,6 +10,7 @@ function Assessment() {
   const [answers, setAnswers] = useState({});
   const [questionScores, setQuestionScores] = useState({});
   const [completed, setCompleted] = useState(false);
+  const [prioritySkills, setPrioritySkills] = useState([]);
 
   // Fetch questions from MongoDB
   useEffect(() => {
@@ -36,9 +37,7 @@ function Assessment() {
 
   // Calculate overall percentage
   const overallPercentage =
-    maxScore > 0
-      ? Math.round((totalScore / maxScore) * 100)
-      : 0;
+    maxScore > 0 ? Math.round((totalScore / maxScore) * 100) : 0;
 
   // Calculate skill-wise results
   const skillResults = {};
@@ -63,9 +62,7 @@ function Assessment() {
   // Prepare final skill results
   const finalSkillResults = Object.entries(skillResults).map(
     ([skill, data]) => {
-      const percentage = Math.round(
-        (data.totalScore / data.maxScore) * 100
-      );
+      const percentage = Math.round((data.totalScore / data.maxScore) * 100);
 
       let level = "Needs Improvement";
 
@@ -83,22 +80,16 @@ function Assessment() {
         percentage,
         level,
       };
-    }
+    },
   );
 
   // Save result after completion
   useEffect(() => {
     if (completed) {
       // Save locally
-      localStorage.setItem(
-        "assessmentScore",
-        overallPercentage.toString()
-      );
+      localStorage.setItem("assessmentScore", overallPercentage.toString());
 
-      localStorage.setItem(
-        "assessmentAnswers",
-        JSON.stringify(answers)
-      );
+      localStorage.setItem("assessmentAnswers", JSON.stringify(answers));
 
       // Save assessment result to MongoDB
       const saveAssessment = async () => {
@@ -116,32 +107,22 @@ function Assessment() {
             })),
           });
 
-          console.log(
-            "Assessment result saved to MongoDB"
-          );
+          console.log("Assessment result saved to MongoDB");
 
           // Show Skill Evaluation response
-          console.log(
-            "Skill Evaluation:",
-            response.data.skillEvaluation
-          );
+          console.log("Skill Evaluation:", response.data.skillEvaluation);
+          setPrioritySkills(response.data.skillEvaluation.prioritySkills);
         } catch (error) {
           console.error(
             "Failed to save assessment:",
-            error.response?.data?.message ||
-              error.message
+            error.response?.data?.message || error.message,
           );
         }
       };
 
       saveAssessment();
     }
-  }, [
-    completed,
-    overallPercentage,
-    totalScore,
-    maxScore,
-  ]);
+  }, [completed, overallPercentage, totalScore, maxScore]);
 
   // Skill Gap Analysis
   const skillGaps = finalSkillResults
@@ -168,8 +149,7 @@ function Assessment() {
   const handleAnswer = (answer) => {
     const question = questions[currentQuestion];
 
-    const isCorrect =
-      answer === question.correctAnswer;
+    const isCorrect = answer === question.correctAnswer;
 
     const score = isCorrect ? 3 : 1;
 
@@ -205,34 +185,25 @@ function Assessment() {
             <div>
               <h1>Career Assessment</h1>
 
-              <p>
-                Assess your skills and discover suitable
-                career paths.
-              </p>
+              <p>Assess your skills and discover suitable career paths.</p>
             </div>
           </div>
 
           <div className="assessment-card">
-
             {/* Introduction */}
             {!started && !completed && (
               <>
                 <h2>Discover Your Career Path</h2>
 
                 <p>
-                  This assessment will analyze your
-                  technical skills, interests and
-                  problem-solving abilities to help
-                  you understand suitable career
-                  options.
+                  This assessment will analyze your technical skills, interests
+                  and problem-solving abilities to help you understand suitable
+                  career options.
                 </p>
 
                 <div className="assessment-info">
-
                   <div>
-                    <strong>
-                      {questions.length}
-                    </strong>
+                    <strong>{questions.length}</strong>
 
                     <span>Questions</span>
                   </div>
@@ -240,12 +211,8 @@ function Assessment() {
                   <div>
                     <strong>
                       {
-                        new Set(
-                          questions.map(
-                            (question) =>
-                              question.skill
-                          )
-                        ).size
+                        new Set(questions.map((question) => question.skill))
+                          .size
                       }
                     </strong>
 
@@ -257,7 +224,6 @@ function Assessment() {
 
                     <span>Time Required</span>
                   </div>
-
                 </div>
 
                 <button
@@ -275,151 +241,120 @@ function Assessment() {
             )}
 
             {/* Questions */}
-            {started &&
-              !completed &&
-              questions.length > 0 && (
-                <div className="question-section">
+            {started && !completed && questions.length > 0 && (
+              <div className="question-section">
+                <p className="question-number">
+                  Question {currentQuestion + 1} of {questions.length}
+                </p>
 
-                  <p className="question-number">
-                    Question{" "}
-                    {currentQuestion + 1} of{" "}
-                    {questions.length}
-                  </p>
+                <h2>{questions[currentQuestion].question}</h2>
 
-                  <h2>
-                    {
-                      questions[currentQuestion]
-                        .question
-                    }
-                  </h2>
-
-                  <div className="question-options">
-
-                    {questions[
-                      currentQuestion
-                    ].options.map((option) => (
-                      <button
-                        key={option}
-                        className="question-option"
-                        onClick={() =>
-                          handleAnswer(option)
-                        }
-                      >
-                        {option}
-                      </button>
-                    ))}
-
-                  </div>
-
+                <div className="question-options">
+                  {questions[currentQuestion].options.map((option) => (
+                    <button
+                      key={option}
+                      className="question-option"
+                      onClick={() => handleAnswer(option)}
+                    >
+                      {option}
+                    </button>
+                  ))}
                 </div>
-              )}
+              </div>
+            )}
 
             {/* Assessment Result */}
             {completed && (
               <div className="assessment-result">
+                <h2>Assessment Completed</h2>
 
-                <h2>
-                  Assessment Completed
-                </h2>
-
-                <p>
-                  Your skill assessment has been
-                  completed successfully.
-                </p>
+                <p>Your skill assessment has been completed successfully.</p>
 
                 {/* Overall Score */}
                 <div className="overall-score">
+                  <span>Overall Skill Score</span>
 
-                  <span>
-                    Overall Skill Score
-                  </span>
-
-                  <strong>
-                    {overallPercentage}%
-                  </strong>
+                  <strong>{overallPercentage}%</strong>
 
                   <small>
                     {totalScore} / {maxScore} points
                   </small>
-
                 </div>
 
                 {/* Skill-wise Results */}
                 <div className="skill-results">
+                  {finalSkillResults.map((result) => (
+                    <div className="skill-result-item" key={result.skill}>
+                      <div>
+                        <strong>{result.skill}</strong>
 
-                  {finalSkillResults.map(
-                    (result) => (
-                      <div
-                        className="skill-result-item"
-                        key={result.skill}
-                      >
-
-                        <div>
-                          <strong>
-                            {result.skill}
-                          </strong>
-
-                          <span>
-                            {result.level} •{" "}
-                            {result.percentage}%
-                          </span>
-                        </div>
-
-                        <strong>
-                          {result.totalScore}/
-                          {result.maxScore}
-                        </strong>
-
+                        <span>
+                          {result.level} • {result.percentage}%
+                        </span>
                       </div>
-                    )
-                  )}
 
+                      <strong>
+                        {result.totalScore}/{result.maxScore}
+                      </strong>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Skill Gap */}
                 <div className="skill-gap-section">
-
-                  <h3>
-                    Skill Gap Analysis
-                  </h3>
+                  <h3>Skill Gap Analysis</h3>
 
                   <p>
-                    These skills can be improved
-                    to strengthen your career
+                    These skills can be improved to strengthen your career
                     readiness.
                   </p>
 
                   <div className="skill-gap-list">
-
                     {skillGaps.map((gap) => (
-                      <div
-                        className="skill-gap-item"
-                        key={gap.skill}
-                      >
-
+                      <div className="skill-gap-item" key={gap.skill}>
                         <div>
-
-                          <strong>
-                            {gap.skill}
-                          </strong>
+                          <strong>{gap.skill}</strong>
 
                           <span>
-                            {gap.level} •{" "}
-                            {gap.percentage}%
+                            {gap.level} • {gap.percentage}%
                           </span>
-
                         </div>
 
                         <strong>
-                          {gap.score}/
-                          {gap.maxScore}
+                          {gap.score}/{gap.maxScore}
                         </strong>
-
                       </div>
                     ))}
-
                   </div>
+                </div>
+                {/* Priority Skills */}
+                <div className="priority-skills-section">
+                  <h3>Priority Skills</h3>
 
+                  <p>
+                    These skills should be your first focus based on your
+                    current skill gaps.
+                  </p>
+
+                  <div className="priority-skills-list">
+                    {prioritySkills.map((skill, index) => (
+                      <div className="priority-skill-item" key={skill.skill}>
+                        <div className="priority-skill-rank">#{index + 1}</div>
+
+                        <div className="priority-skill-info">
+                          <strong>{skill.skill}</strong>
+
+                          <span>
+                            {skill.percentage}% • Priority {skill.priority}
+                          </span>
+                        </div>
+
+                        <strong>
+                          {skill.score}/{skill.maxScore}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Retake */}
@@ -432,21 +367,15 @@ function Assessment() {
                     setQuestionScores({});
                     setCompleted(false);
 
-                    localStorage.removeItem(
-                      "assessmentAnswers"
-                    );
+                    localStorage.removeItem("assessmentAnswers");
 
-                    localStorage.removeItem(
-                      "assessmentScore"
-                    );
+                    localStorage.removeItem("assessmentScore");
                   }}
                 >
                   Retake Assessment
                 </button>
-
               </div>
             )}
-
           </div>
         </main>
       </div>
