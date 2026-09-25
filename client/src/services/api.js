@@ -1,9 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:5000/api"
+    baseURL: "http://localhost:5000/api",
 });
 
+// ==========================================
+// REQUEST INTERCEPTOR
+// JWT token automatically request me bhejega
+// ==========================================
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("token");
@@ -15,6 +19,30 @@ api.interceptors.request.use(
         return config;
     },
     (error) => {
+        return Promise.reject(error);
+    }
+);
+
+// ==========================================
+// RESPONSE INTERCEPTOR
+// Invalid / Expired JWT handle karega
+// ==========================================
+api.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        if (error.response?.status === 401) {
+            // Invalid / expired token
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            // Login page par redirect
+            if (window.location.pathname !== "/login") {
+                window.location.href = "/login";
+            }
+        }
+
         return Promise.reject(error);
     }
 );

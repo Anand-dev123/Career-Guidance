@@ -4,12 +4,23 @@ const mongoose = require("mongoose");
 const Career = require("./models/Career");
 
 const careers = [
+
     {
         name: "Software Developer",
-        category: "Software Development",
+
         description:
-            "Build web, mobile and software applications using programming and development technologies.",
-        requiredSkills: ["Java", "JavaScript", "DSA", "Git"],
+            "Build web, mobile and software applications using programming, problem solving and software development technologies.",
+
+        category: "Software Development",
+
+        requiredSkills: [
+            "Java",
+            "JavaScript",
+            "DSA",
+            "Git",
+            "Programming"
+        ],
+
         roadmap: [
             "Programming Fundamentals",
             "Java",
@@ -17,123 +28,157 @@ const careers = [
             "Git",
             "Software Development"
         ],
+
         difficulty: "Intermediate"
     },
 
     {
         name: "Full Stack Developer",
-        category: "Web Development",
+
         description:
-            "Develop complete web applications by working with both frontend and backend technologies.",
+            "Develop complete web applications by working with frontend and backend technologies.",
+
+        category: "Web Development",
+
         requiredSkills: [
             "HTML",
             "CSS",
             "JavaScript",
             "React",
-            "Node.js"
+            "Node.js",
+            "MongoDB",
+            "Web Development"
         ],
+
         roadmap: [
             "HTML",
             "CSS",
             "JavaScript",
             "React",
             "Node.js",
-            "Express",
+            "Express.js",
             "MongoDB"
         ],
+
         difficulty: "Intermediate"
     },
 
     {
         name: "Data Scientist",
-        category: "Data Science",
+
         description:
             "Analyze data and build data-driven solutions using statistics, programming and machine learning.",
+
+        category: "Data Science",
+
         requiredSkills: [
             "Python",
             "Statistics",
-            "SQL",
-            "Machine Learning"
+            "Machine Learning",
+            "Data Analysis",
+            "Data Visualization"
         ],
+
         roadmap: [
             "Python",
             "Statistics",
-            "SQL",
             "Data Analysis",
+            "Data Visualization",
             "Machine Learning"
         ],
+
         difficulty: "Advanced"
     },
 
     {
         name: "AI/ML Engineer",
-        category: "Artificial Intelligence",
+
         description:
-            "Design and develop intelligent systems using machine learning and artificial intelligence techniques.",
+            "Design and develop intelligent systems using machine learning, deep learning and artificial intelligence techniques.",
+
+        category: "Artificial Intelligence",
+
         requiredSkills: [
             "Python",
             "Machine Learning",
             "Deep Learning",
-            "AI"
+            "Artificial Intelligence"
         ],
+
         roadmap: [
             "Python",
             "Mathematics",
             "Machine Learning",
             "Deep Learning",
-            "AI"
+            "Artificial Intelligence"
         ],
+
         difficulty: "Advanced"
     },
 
     {
         name: "DevOps Engineer",
-        category: "Cloud & DevOps",
+
         description:
             "Manage software deployment, automation, cloud infrastructure and development operations.",
+
+        category: "Cloud & DevOps",
+
         requiredSkills: [
             "Linux",
             "Git",
             "Docker",
-            "Cloud",
-            "CI/CD"
+            "Cloud Computing",
+            "CI/CD",
+            "Kubernetes"
         ],
+
         roadmap: [
             "Linux",
             "Git",
-            "Networking",
             "Docker",
             "CI/CD",
-            "Cloud"
+            "Cloud Computing",
+            "Kubernetes"
         ],
+
         difficulty: "Advanced"
     },
 
     {
         name: "Cybersecurity Analyst",
-        category: "Cybersecurity",
+
         description:
             "Protect applications, systems and networks from security threats and vulnerabilities.",
+
+        category: "Cybersecurity",
+
         requiredSkills: [
             "Networking",
-            "Linux",
-            "Security",
-            "Cryptography"
+            "Cybersecurity",
+            "Network Security",
+            "Authentication"
         ],
+
         roadmap: [
             "Networking",
-            "Linux",
             "Cybersecurity Fundamentals",
-            "Cryptography",
+            "Network Security",
+            "Authentication",
             "Security"
         ],
+
         difficulty: "Advanced"
     }
+
 ];
 
 const seedDatabase = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+
+        await mongoose.connect(
+            process.env.MONGO_URI
+        );
 
         console.log("MongoDB connected");
 
@@ -141,12 +186,19 @@ const seedDatabase = async () => {
 
         await Career.insertMany(careers);
 
-        console.log("Career data inserted successfully");
+        console.log(
+            `${careers.length} careers inserted successfully`
+        );
 
         await mongoose.connection.close();
 
     } catch (error) {
-        console.error("Error:", error.message);
+
+        console.error(
+            "Error:",
+            error.message
+        );
+
     }
 };
 

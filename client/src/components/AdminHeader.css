@@ -1,0 +1,272 @@
+/* =========================================================
+   ADMIN HEADER
+========================================================= */
+
+.admin-header {
+  min-height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+  padding: 0 4px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.admin-header-left {
+  min-width: 0;
+}
+
+.admin-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-bottom: 7px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.admin-breadcrumb strong {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.admin-header-heading h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.admin-header-heading p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.admin-notification-button {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #64748b;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.admin-notification-button:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #2563eb;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.admin-header-divider {
+  width: 1px;
+  height: 30px;
+
+  background: #e2e8f0;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-profile-avatar {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eff6ff;
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-profile-info {
+  min-width: 100px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-profile-info strong {
+  overflow: hidden;
+
+  color: #0f172a;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.admin-profile-info span {
+  margin-top: 2px;
+
+  max-width: 150px;
+
+  overflow: hidden;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   HEADER LOGOUT
+========================================================= */
+
+.admin-header-logout {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #64748b;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.admin-header-logout:hover {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .admin-header {
+    align-items: flex-start;
+  }
+
+  .admin-profile-info {
+    display: none;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .admin-header {
+    min-height: auto;
+
+    margin-bottom: 20px;
+
+    gap: 12px;
+  }
+
+  .admin-header-heading h1 {
+    font-size: 20px;
+  }
+
+  .admin-header-heading p {
+    font-size: 12px;
+  }
+
+  .admin-header-right {
+    gap: 7px;
+  }
+
+  .admin-header-divider {
+    display: none;
+  }
+
+  .admin-profile-avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .admin-notification-button,
+  .admin-header-logout {
+    width: 34px;
+    height: 34px;
+  }
+}

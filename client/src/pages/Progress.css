@@ -1,0 +1,920 @@
+.progress-content {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 30px 34px 50px;
+}
+
+/* ==========================================
+   Page Header
+========================================== */
+
+.progress-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.progress-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.progress-page-header h1 {
+  margin: 8px 0 0;
+  color: #0f172a;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.progress-page-header p {
+  margin: 9px 0 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.progress-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #dbeafe;
+  border-radius: 11px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* ==========================================
+   Career Card
+========================================== */
+
+.progress-career-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 76px;
+  margin-bottom: 18px;
+  padding: 15px 18px;
+  border: 1px solid #dbeafe;
+  border-radius: 13px;
+  background: #eff6ff;
+}
+
+.progress-career-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 41px;
+  height: 41px;
+  flex: 0 0 41px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #2563eb;
+}
+
+.progress-career-info {
+  flex: 1;
+}
+
+.progress-career-info span {
+  display: block;
+  margin-bottom: 3px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.progress-career-info h2 {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.progress-career-card > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ==========================================
+   Summary
+========================================== */
+
+.progress-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.progress-summary-card {
+  position: relative;
+  min-height: 112px;
+  padding: 17px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.summary-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 12px;
+  border-radius: 9px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.progress-summary-card > span {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.progress-summary-card strong {
+  display: block;
+  margin-top: 5px;
+  color: #0f172a;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.progress-summary-card small {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* ==========================================
+   Generic Section
+========================================== */
+
+.progress-section {
+  margin-bottom: 20px;
+  padding: 21px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.progress-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.progress-section-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.progress-section-header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.progress-section-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.progress-badge {
+  padding: 6px 10px;
+  border: 1px solid #dbeafe;
+  border-radius: 7px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   Learning Metrics
+========================================== */
+
+.learning-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.learning-metric-card {
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.metric-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #2563eb;
+}
+
+.metric-top strong {
+  color: #0f172a;
+  font-size: 17px;
+}
+
+.learning-metric-card > span {
+  display: block;
+  margin-top: 11px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.metric-progress {
+  height: 5px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.metric-progress div {
+  height: 100%;
+  border-radius: inherit;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+/* ==========================================
+   Assessment
+========================================== */
+
+.assessment-progress-content {
+  display: grid;
+  gap: 16px;
+}
+
+.overall-progress-box {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  background: #f8fafc;
+}
+
+.overall-score-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  border: 6px solid #dbeafe;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.overall-score-circle strong {
+  color: #2563eb;
+  font-size: 19px;
+}
+
+.overall-score-circle span {
+  margin-top: 2px;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.overall-progress-info {
+  flex: 1;
+}
+
+.overall-progress-info > span {
+  display: block;
+  margin-bottom: 4px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.overall-progress-info > strong {
+  display: block;
+  color: #0f172a;
+  font-size: 16px;
+}
+
+.overall-progress-info p {
+  margin: 5px 0 12px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.analytics-progress-bar {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.analytics-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.skill-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.skill-highlight-card {
+  padding: 16px;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  background: #f0fdf4;
+}
+
+.skill-highlight-card.attention {
+  border-color: #fed7aa;
+  background: #fff7ed;
+}
+
+.skill-highlight-card > span {
+  display: block;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.skill-highlight-card strong {
+  display: block;
+  margin-top: 7px;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.skill-highlight-card small {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* ==========================================
+   Skill Progress
+========================================== */
+
+.skill-progress-list {
+  display: grid;
+  gap: 15px;
+}
+
+.skill-progress-row {
+  display: grid;
+  gap: 7px;
+}
+
+.skill-progress-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.skill-progress-name strong {
+  color: #334155;
+  font-size: 12px;
+}
+
+.skill-progress-name span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   Roadmap
+========================================== */
+
+.roadmap-progress-overview,
+.assignment-progress-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.roadmap-progress-overview > div,
+.assignment-progress-overview > div {
+  padding: 15px;
+  text-align: center;
+  border-right: 1px solid #e2e8f0;
+}
+
+.roadmap-progress-overview > div:last-child,
+.assignment-progress-overview > div:last-child {
+  border-right: 0;
+}
+
+.roadmap-progress-overview strong,
+.assignment-progress-overview strong {
+  display: block;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.roadmap-progress-overview span,
+.assignment-progress-overview span {
+  display: block;
+  margin-top: 3px;
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.roadmap-analytics-bar {
+  margin-bottom: 17px;
+}
+
+.progress-roadmap-list,
+.progress-assignment-list {
+  display: grid;
+  gap: 8px;
+}
+
+.progress-roadmap-item,
+.progress-assignment-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.progress-roadmap-item.completed,
+.progress-assignment-item.completed {
+  border-color: #bbf7d0;
+  background: #fbfffc;
+}
+
+.progress-step-number,
+.progress-assignment-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.progress-step-number.completed,
+.progress-assignment-number.completed {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.progress-step-info,
+.progress-assignment-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-step-info strong,
+.progress-assignment-info strong {
+  display: block;
+  color: #334155;
+  font-size: 12px;
+}
+
+.progress-step-info span,
+.progress-assignment-info span {
+  display: block;
+  margin-top: 3px;
+  overflow: hidden;
+  color: #94a3b8;
+  font-size: 10px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-step-status,
+.progress-assignment-status {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.progress-step-status.completed,
+.progress-assignment-status.completed {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+/* ==========================================
+   Assignment
+========================================== */
+
+.progress-inline-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.progress-inline-action button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 11px;
+  border: 1px solid #2563eb;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.progress-inline-action button:hover {
+  background: #1d4ed8;
+}
+
+/* ==========================================
+   Focus Areas
+========================================== */
+
+.focus-progress-list {
+  display: grid;
+  gap: 15px;
+}
+
+.focus-progress-item > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 7px;
+}
+
+.focus-progress-item strong {
+  color: #334155;
+  font-size: 12px;
+}
+
+.focus-progress-item span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   Empty / Success
+========================================== */
+
+.progress-empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 35px 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 11px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.progress-empty.compact {
+  padding: 23px;
+}
+
+.progress-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.progress-empty h3 {
+  margin: 11px 0 4px;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.progress-empty p {
+  max-width: 450px;
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.progress-empty button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 9px 12px;
+  border: 1px solid #2563eb;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.progress-success {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.progress-success strong {
+  display: block;
+  color: #166534;
+  font-size: 12px;
+}
+
+.progress-success span {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* ==========================================
+   Bottom Actions
+========================================== */
+
+.progress-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 5px;
+}
+
+.progress-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 9px 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.progress-actions button:hover {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* ==========================================
+   Skeleton
+========================================== */
+
+.progress-skeleton {
+  border-radius: 8px;
+  background: #e2e8f0;
+  animation: progress-pulse 1.4s ease-in-out infinite;
+}
+
+.progress-skeleton-header {
+  margin-bottom: 25px;
+}
+
+.skeleton-title {
+  width: 260px;
+  height: 34px;
+}
+
+.skeleton-text {
+  width: 440px;
+  max-width: 80%;
+  height: 15px;
+  margin-top: 10px;
+}
+
+.progress-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.skeleton-card {
+  height: 112px;
+}
+
+.skeleton-large {
+  height: 400px;
+}
+
+@keyframes progress-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 1050px) {
+  .progress-content {
+    padding: 26px 24px 42px;
+  }
+
+  .progress-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .progress-skeleton-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .progress-content {
+    padding: 21px 16px 35px;
+  }
+
+  .progress-page-header {
+    align-items: flex-start;
+  }
+
+  .progress-page-header h1 {
+    font-size: 28px;
+  }
+
+  .progress-header-icon {
+    display: none;
+  }
+
+  .progress-career-card {
+    align-items: flex-start;
+  }
+
+  .progress-career-card > button {
+    display: none;
+  }
+
+  .progress-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overall-progress-box {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .roadmap-progress-overview,
+  .assignment-progress-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-progress-overview > div,
+  .assignment-progress-overview > div {
+    border-right: 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .roadmap-progress-overview > div:last-child,
+  .assignment-progress-overview > div:last-child {
+    border-bottom: 0;
+  }
+
+  .progress-roadmap-item,
+  .progress-assignment-item {
+    align-items: flex-start;
+  }
+
+  .progress-step-status,
+  .progress-assignment-status {
+    display: none;
+  }
+
+  .progress-actions {
+    flex-direction: column;
+  }
+
+  .progress-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .progress-skeleton-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-section {
+    padding: 17px;
+  }
+
+  .progress-section-header {
+    flex-direction: column;
+  }
+
+  .progress-summary-card {
+    min-height: 105px;
+  }
+
+  .progress-task-info span,
+  .progress-assignment-info span {
+    white-space: normal;
+  }
+}
