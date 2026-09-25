@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // ==========================================
 // Student Pages
@@ -47,6 +47,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* ==================================
+            Root Route
+        ================================== */}
+
+        <Route
+          path="/"
+          element={<Navigate to="/login" replace />}
+        />
 
         {/* ==================================
             Public Routes
