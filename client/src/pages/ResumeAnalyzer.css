@@ -1,87 +1,121 @@
-/* =========================================
+/* =========================================================
    RESUME ANALYZER
-========================================= */
+   Professional Career Platform UI
+========================================================= */
 
 .resume-page {
   background: #f8fafc;
 }
 
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
 .resume-header {
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
-.resume-eyebrow {
+.resume-eyebrow,
+.section-eyebrow {
   display: flex;
   align-items: center;
   gap: 6px;
+
   color: #2563eb;
+
   font-size: 10px;
   font-weight: 700;
+
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .resume-header h1 {
   margin: 8px 0 6px;
+
   color: #0f172a;
+
   font-size: 30px;
   line-height: 1.2;
   font-weight: 700;
+
   letter-spacing: -0.5px;
 }
 
 .resume-header p {
   margin: 0;
+
   max-width: 700px;
+
   color: #64748b;
+
   font-size: 14px;
   line-height: 1.6;
 }
 
 
-/* =========================================
+/* =========================================================
    ERROR
-========================================= */
+========================================================= */
 
 .resume-error {
   margin-bottom: 18px;
-  padding: 11px 13px;
+
+  padding: 12px 14px;
+
   border: 1px solid #fecaca;
-  border-radius: 7px;
+  border-radius: 9px;
+
   background: #fef2f2;
   color: #b91c1c;
+
   display: flex;
   align-items: center;
   gap: 8px;
+
   font-size: 11px;
 }
 
 
-/* =========================================
-   UPLOAD
-========================================= */
+/* =========================================================
+   UPLOAD CARD
+========================================================= */
 
 .resume-upload-card {
-  padding: 22px;
+  padding: 24px;
+
   margin-bottom: 22px;
+
   background: #ffffff;
+
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.02);
 }
 
 .upload-card-header {
   display: flex;
   align-items: center;
-  gap: 11px;
-  margin-bottom: 17px;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
 }
 
 .upload-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+
+  border-radius: 9px;
+
   background: #eff6ff;
+
   color: #2563eb;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,40 +123,56 @@
 
 .upload-card-header h2 {
   margin: 0 0 3px;
+
   color: #0f172a;
+
   font-size: 17px;
   font-weight: 650;
 }
 
 .upload-card-header p {
   margin: 0;
+
   color: #64748b;
+
   font-size: 11px;
 }
 
 
-/* =========================================
+/* =========================================================
    DROPZONE
-========================================= */
+========================================================= */
 
 .resume-dropzone {
-  min-height: 155px;
+  min-height: 160px;
+
   border: 1px dashed #cbd5e1;
-  border-radius: 9px;
+
+  border-radius: 10px;
+
   background: #f8fafc;
+
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
+
   cursor: pointer;
+
   transition:
     border-color 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .resume-dropzone:hover {
   border-color: #93c5fd;
+
   background: #f8fbff;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.04);
 }
 
 .resume-dropzone input {
@@ -130,150 +180,229 @@
 }
 
 .dropzone-icon {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
+
   margin-bottom: 10px;
-  border-radius: 9px;
+
+  border-radius: 10px;
+
   background: #ffffff;
+
   color: #2563eb;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border: 1px solid #e2e8f0;
 }
 
 .resume-dropzone strong {
   color: #334155;
+
   font-size: 12px;
 }
 
 .resume-dropzone span {
   margin-top: 4px;
+
   color: #94a3b8;
+
   font-size: 10px;
 }
 
 
+/* =========================================================
+   SELECTED FILE
+========================================================= */
+
 .selected-file {
   margin-top: 11px;
-  padding: 9px 11px;
+
+  padding: 10px 12px;
+
   border: 1px solid #dbeafe;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   background: #f8fbff;
+
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 10px;
 }
 
 .selected-file-info {
   display: flex;
+
   align-items: center;
-  gap: 8px;
+
+  gap: 9px;
+
   min-width: 0;
 }
 
 .file-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
+  width: 31px;
+  height: 31px;
+
+  border-radius: 7px;
+
   background: #eff6ff;
+
   color: #2563eb;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
 }
 
 .selected-file-info strong {
   display: block;
+
   max-width: 600px;
+
   overflow: hidden;
+
   text-overflow: ellipsis;
+
   white-space: nowrap;
+
   color: #334155;
+
   font-size: 10px;
 }
 
 .selected-file-info span {
   display: block;
+
   margin-top: 2px;
+
   color: #94a3b8;
+
   font-size: 9px;
 }
 
 .remove-file {
-  width: 28px;
-  height: 28px;
+  width: 29px;
+  height: 29px;
+
   border: 1px solid #e2e8f0;
-  border-radius: 6px;
+
+  border-radius: 7px;
+
   background: #ffffff;
+
   color: #64748b;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
 .remove-file:hover {
   color: #dc2626;
+
   border-color: #fecaca;
+
   background: #fef2f2;
 }
 
 
-/* =========================================
+/* =========================================================
    BUTTONS
-========================================= */
+========================================================= */
 
 .primary-resume-button,
 .ai-analysis-button {
-  height: 38px;
-  margin-top: 13px;
-  padding: 0 14px;
+  height: 40px;
+
+  padding: 0 15px;
+
   border: none;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 7px;
+
   font-size: 11px;
+
   font-weight: 600;
+
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .primary-resume-button {
   width: 100%;
+
+  margin-top: 14px;
+
   background: #2563eb;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 2px 5px rgba(37, 99, 235, 0.18);
+}
+
+.primary-resume-button:hover:not(:disabled) {
+  background: #1d4ed8;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 12px rgba(37, 99, 235, 0.18);
+}
+
+.ai-analysis-button {
+  background: #0f172a;
+
   color: #ffffff;
 }
 
-.primary-resume-button:hover {
-  background: #1d4ed8;
+.ai-analysis-button:hover:not(:disabled) {
+  background: #1e293b;
+
+  transform: translateY(-1px);
 }
 
 .primary-resume-button:disabled,
 .ai-analysis-button:disabled {
   opacity: 0.55;
+
   cursor: not-allowed;
-}
-
-.ai-analysis-button {
-  margin-top: 0;
-  background: #0f172a;
-  color: #ffffff;
-}
-
-.ai-analysis-button:hover {
-  background: #1e293b;
 }
 
 .button-spinner {
   width: 13px;
   height: 13px;
+
   border: 2px solid rgba(255, 255, 255, 0.35);
+
   border-top-color: #ffffff;
+
   border-radius: 50%;
+
   animation: resumeSpin 0.7s linear infinite;
 }
 
@@ -284,34 +413,47 @@
 }
 
 
-/* =========================================
+/* =========================================================
    EXTRACTED RESULT
-========================================= */
+========================================================= */
 
 .resume-extracted-card {
   margin-bottom: 22px;
-  padding: 20px;
+
+  padding: 21px;
+
   background: #ffffff;
+
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+
+  border-radius: 12px;
 }
 
 .success-banner {
-  padding: 11px 12px;
+  padding: 12px 13px;
+
   border: 1px solid #bbf7d0;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   background: #f0fdf4;
+
   display: flex;
   align-items: center;
+
   gap: 9px;
 }
 
 .success-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 29px;
+  height: 29px;
+
+  border-radius: 7px;
+
   background: #dcfce7;
+
   color: #16a34a;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -319,220 +461,795 @@
 
 .success-banner strong {
   display: block;
+
   color: #166534;
+
   font-size: 11px;
 }
 
 .success-banner span {
   display: block;
+
   margin-top: 2px;
+
   color: #15803d;
+
   font-size: 9px;
 }
 
+
+/* =========================================================
+   RESUME STATS
+========================================================= */
+
 .resume-stat-row {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 10px;
+
   margin-top: 13px;
 }
 
 .resume-stat {
-  padding: 10px;
+  padding: 11px;
+
   border: 1px solid #e2e8f0;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   background: #f8fafc;
 }
 
 .resume-stat span {
   display: block;
+
   color: #94a3b8;
+
   font-size: 9px;
 }
 
 .resume-stat strong {
   display: block;
+
   margin-top: 4px;
+
   color: #334155;
+
   font-size: 10px;
+
   overflow: hidden;
+
   text-overflow: ellipsis;
+
   white-space: nowrap;
 }
 
+
+/* =========================================================
+   EXTRACTED TEXT
+========================================================= */
+
 .extracted-text {
   margin-top: 13px;
+
   border: 1px solid #e2e8f0;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   overflow: hidden;
 }
 
 .extracted-text summary {
   padding: 10px 12px;
+
   background: #f8fafc;
+
   color: #475569;
+
   font-size: 10px;
+
   font-weight: 600;
+
   cursor: pointer;
 }
 
 .extracted-text div {
   max-height: 280px;
+
   overflow-y: auto;
+
   padding: 12px;
+
   color: #64748b;
+
   font-size: 10px;
+
   line-height: 1.7;
+
   white-space: pre-wrap;
 }
 
+
+/* =========================================================
+   ANALYSIS ACTION
+========================================================= */
+
 .analysis-action {
   margin-top: 14px;
-  padding: 13px;
+
+  padding: 14px;
+
   border: 1px solid #dbeafe;
-  border-radius: 8px;
+
+  border-radius: 9px;
+
   background: #f8fbff;
+
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 18px;
 }
 
 .analysis-action strong {
   display: block;
+
   color: #334155;
+
   font-size: 11px;
 }
 
 .analysis-action span {
   display: block;
+
   margin-top: 3px;
+
   color: #64748b;
+
   font-size: 9px;
 }
 
 
-/* =========================================
-   ANALYSIS
-========================================= */
+/* =========================================================
+   ANALYSIS CONTAINER
+========================================================= */
 
 .analysis-container {
   display: flex;
+
   flex-direction: column;
-  gap: 13px;
+
+  gap: 14px;
 }
 
 .analysis-header {
-  padding: 4px 0 6px;
+  padding: 5px 0 7px;
 }
 
 .analysis-header h2 {
   margin: 7px 0 4px;
-  font-size: 20px;
+
+  color: #0f172a;
+
+  font-size: 21px;
+
+  letter-spacing: -0.2px;
 }
 
 .analysis-header p {
   margin: 0;
+
   color: #64748b;
+
   font-size: 11px;
 }
 
+
+/* =========================================================
+   ANALYSIS SECTION
+========================================================= */
+
 .analysis-section {
-  padding: 17px;
+  padding: 18px;
+
   background: #ffffff;
+
   border: 1px solid #e2e8f0;
-  border-radius: 9px;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.015);
 }
 
 .analysis-section-header {
   display: flex;
+
   align-items: center;
+
   gap: 8px;
-  margin-bottom: 13px;
+
+  margin-bottom: 14px;
+
   padding-bottom: 11px;
+
   border-bottom: 1px solid #f1f5f9;
 }
 
 .analysis-section-icon {
-  width: 29px;
-  height: 29px;
-  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+
+  border-radius: 7px;
+
   background: #eff6ff;
+
   color: #2563eb;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
 
 .analysis-section-header h3 {
   margin: 0;
+
+  color: #0f172a;
+
   font-size: 13px;
+
   font-weight: 650;
 }
 
 .analysis-section-content {
   color: #475569;
+
   font-size: 10px;
+
   line-height: 1.6;
 }
 
 
-/* =========================================
+/* =========================================================
+   =========================================================
+   RESUME SCORE - PROFESSIONAL UI
+   =========================================================
+========================================================= */
+
+.resume-score-section {
+  position: relative;
+
+  padding: 25px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fbfdff 100%
+    );
+
+  border: 1px solid #dfe7f1;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.025);
+
+  overflow: hidden;
+}
+
+
+/* subtle top accent */
+
+.resume-score-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  background: #2563eb;
+}
+
+
+/* =========================================================
+   SCORE HEADER
+========================================================= */
+
+.resume-score-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 35px;
+
+  padding-bottom: 22px;
+}
+
+.resume-score-intro {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.resume-score-header h2 {
+  margin: 6px 0 7px;
+
+  color: #0f172a;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.4px;
+}
+
+.resume-score-header p {
+  max-width: 690px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   SCORE CIRCLE
+========================================================= */
+
+.resume-score-circle {
+  position: relative;
+
+  width: 116px;
+  height: 116px;
+
+  min-width: 116px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #ffffff;
+
+  border: 8px solid #e2e8f0;
+
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.07);
+
+  z-index: 1;
+}
+
+.resume-score-circle::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 7px;
+
+  border-radius: 50%;
+
+  border: 1px solid #eef2f7;
+
+  pointer-events: none;
+}
+
+.resume-score-circle strong {
+  position: relative;
+  z-index: 2;
+
+  color: #0f172a;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  font-weight: 700;
+}
+
+.resume-score-circle span {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 5px;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* SCORE STATES */
+
+.resume-score-excellent {
+  border-color: #16a34a;
+}
+
+.resume-score-good {
+  border-color: #2563eb;
+}
+
+.resume-score-developing {
+  border-color: #f59e0b;
+}
+
+.resume-score-needs-improvement {
+  border-color: #ef4444;
+}
+
+
+/* =========================================================
+   OVERALL STATUS
+========================================================= */
+
+.resume-score-category {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 14px 16px;
+
+  margin-bottom: 20px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e8edf3;
+
+  border-radius: 10px;
+}
+
+.score-status-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.score-status-info span {
+  color: #475569;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+.score-status-info small {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+.resume-score-category strong {
+  padding: 5px 10px;
+
+  border-radius: 6px;
+
+  background: #ecfdf5;
+
+  color: #15803d;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* remove border color from status class */
+
+.resume-score-category strong.resume-score-excellent,
+.resume-score-category strong.resume-score-good,
+.resume-score-category strong.resume-score-developing,
+.resume-score-category strong.resume-score-needs-improvement {
+  border: none;
+}
+
+
+/* =========================================================
+   BREAKDOWN HEADING
+========================================================= */
+
+.score-breakdown-heading {
+  margin-bottom: 13px;
+}
+
+.breakdown-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.breakdown-icon {
+  width: 31px;
+  height: 31px;
+
+  border-radius: 7px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.breakdown-title > div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.breakdown-title strong {
+  color: #0f172a;
+
+  font-size: 13px;
+}
+
+.breakdown-title span {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   SCORE GRID
+========================================================= */
+
+.resume-score-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   SCORE CARD
+========================================================= */
+
+.resume-score-item {
+  padding: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eaf2;
+
+  border-radius: 10px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.resume-score-item:hover {
+  transform: translateY(-2px);
+
+  border-color: #d2dcea;
+
+  box-shadow:
+    0 7px 18px rgba(15, 23, 42, 0.055);
+}
+
+.score-card-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+.score-card-icon {
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  border-radius: 7px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.score-card-title {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+.score-card-title span {
+  color: #64748b;
+
+  font-size: 10px;
+
+  font-weight: 500;
+}
+
+.score-card-title strong {
+  color: #0f172a;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SCORE PROGRESS
+========================================================= */
+
+.resume-score-progress {
+  width: 100%;
+
+  height: 6px;
+
+  background: #e8edf3;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.resume-score-progress-bar {
+  height: 100%;
+
+  background: #2563eb;
+
+  border-radius: 20px;
+
+  transition: width 0.5s ease;
+}
+
+.resume-score-item p {
+  margin: 9px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
    SKILLS
-========================================= */
+========================================================= */
 
 .skills-analysis-grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 9px;
 }
 
 .skill-analysis-card {
-  padding: 10px;
+  padding: 11px;
+
   border: 1px solid #e2e8f0;
-  border-radius: 7px;
-  background: #f8fafc;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 8px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.skill-analysis-card:hover {
+  border-color: #cbd5e1;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .skill-analysis-card strong {
   display: block;
+
   color: #334155;
+
   font-size: 10px;
 }
 
 .skill-analysis-card span:not(.skill-level) {
   display: block;
+
   margin-top: 3px;
+
   color: #94a3b8;
+
   font-size: 8px;
+
+  line-height: 1.4;
 }
 
 .skill-level {
-  padding: 4px 6px;
+  padding: 4px 7px;
+
   border-radius: 5px;
+
   background: #eff6ff;
+
   color: #2563eb;
+
   font-size: 8px;
+
   font-weight: 650;
+
   white-space: nowrap;
 }
 
 
-/* =========================================
+/* =========================================================
    LISTS
-========================================= */
+========================================================= */
 
 .analysis-list {
   margin: 0;
+
   padding-left: 17px;
 }
 
 .analysis-list li {
   margin-bottom: 6px;
+
   color: #475569;
 }
 
@@ -546,159 +1263,343 @@
 
 .analysis-empty {
   padding: 12px;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   background: #f8fafc;
+
   color: #94a3b8;
+
   font-size: 10px;
 }
 
 .analysis-empty.success {
   background: #f0fdf4;
+
   color: #15803d;
 }
 
 
-/* =========================================
-   IMPROVEMENTS
-========================================= */
+/* =========================================================
+   CAREER SKILL GAP
+========================================================= */
 
-.improvement-list {
+.career-skill-gap {
   display: flex;
+
   flex-direction: column;
-  gap: 7px;
+
+  gap: 11px;
 }
 
-.improvement-item {
-  padding: 9px 10px;
-  border: 1px solid #fed7aa;
-  border-radius: 6px;
-  background: #fff7ed;
-  color: #9a3412;
+.skill-gap-group {
+  padding: 14px;
+
+  border: 1px solid #e5eaf1;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+}
+
+.skill-gap-title {
   display: flex;
+
   align-items: center;
+
   gap: 7px;
+
+  margin-bottom: 10px;
+}
+
+.skill-gap-title strong {
+  font-size: 10px;
+
+  font-weight: 650;
+}
+
+.matched-title {
+  color: #15803d;
+}
+
+.improve-title {
+  color: #b45309;
+}
+
+.missing-title {
+  color: #dc2626;
+}
+
+.career-skill-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.matched-tag,
+.improve-tag,
+.missing-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 8px;
+
+  border-radius: 6px;
+
+  font-size: 8px;
+
+  font-weight: 600;
+}
+
+.matched-tag {
+  background: #ecfdf3;
+
+  color: #15803d;
+}
+
+.improve-tag {
+  background: #fff7ed;
+
+  color: #b45309;
+}
+
+.missing-tag {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.skill-gap-career-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 11px 13px;
+
+  border-radius: 8px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf1f5;
+
+  color: #64748b;
+
   font-size: 10px;
 }
 
+.skill-gap-career-note strong {
+  color: #475569;
+}
 
-/* =========================================
+.skill-gap-career-note span {
+  color: #2563eb;
+
+  font-weight: 650;
+}
+
+
+/* =========================================================
    CAREER MATCHES
-========================================= */
+========================================================= */
 
 .career-match-list {
   display: flex;
+
   flex-direction: column;
+
   gap: 8px;
 }
 
 .career-match-item {
-  padding: 11px;
+  padding: 12px;
+
   border: 1px solid #e2e8f0;
-  border-radius: 7px;
+
+  border-radius: 8px;
+
   display: flex;
+
   align-items: flex-start;
+
   gap: 10px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.career-match-item:hover {
+  border-color: #cbd5e1;
+
+  background: #fbfdff;
 }
 
 .career-match-number {
-  width: 25px;
-  height: 25px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+
+  border-radius: 7px;
+
   background: #eff6ff;
+
   color: #2563eb;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 9px;
+
   font-weight: 700;
+
   flex-shrink: 0;
 }
 
 .career-match-item strong {
   color: #334155;
+
   font-size: 10px;
 }
 
 .career-match-item p {
   margin: 3px 0 0;
+
   color: #64748b;
+
   font-size: 9px;
+
   line-height: 1.5;
 }
 
 
-/* =========================================
+/* =========================================================
    DSA RECOMMENDATIONS
-========================================= */
+========================================================= */
 
 .dsa-recommendation-section {
-  padding: 19px;
+  padding: 20px;
+
   background: #ffffff;
+
   border: 1px solid #dbe4f0;
-  border-radius: 10px;
+
+  border-radius: 11px;
 }
 
 .dsa-header {
   display: flex;
+
   align-items: flex-start;
+
   gap: 10px;
+
   margin-bottom: 17px;
 }
 
 .dsa-icon {
-  width: 35px;
-  height: 35px;
+  width: 36px;
+  height: 36px;
+
   border-radius: 8px;
+
   background: #eff6ff;
+
   color: #2563eb;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   flex-shrink: 0;
 }
 
 .dsa-header h2 {
   margin: 5px 0 4px;
+
+  color: #0f172a;
+
   font-size: 17px;
 }
 
 .dsa-header p {
   margin: 0;
+
   color: #64748b;
+
   font-size: 10px;
+
   line-height: 1.5;
 }
 
 .dsa-career-grid {
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
-  gap: 11px;
+
+  gap: 12px;
 }
 
 .dsa-career-card {
-  padding: 14px;
+  padding: 15px;
+
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+
+  border-radius: 9px;
+
   background: #ffffff;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dsa-career-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #d2dce9;
+
+  box-shadow:
+    0 7px 18px rgba(15, 23, 42, 0.05);
 }
 
 .dsa-career-top {
   display: flex;
+
   align-items: center;
+
   gap: 9px;
+
   margin-bottom: 13px;
 }
 
 .dsa-rank {
   width: 29px;
   height: 29px;
+
   border-radius: 7px;
+
   background: #f1f5f9;
+
   color: #475569;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 10px;
+
   font-weight: 700;
 }
 
@@ -708,41 +1609,53 @@
 
 .dsa-career-top h3 {
   margin: 0;
+
   color: #0f172a;
+
   font-size: 12px;
 }
 
 .dsa-career-top span {
   display: block;
+
   margin-top: 2px;
+
   color: #94a3b8;
+
   font-size: 8px;
 }
 
 .career-match-percentage {
   padding: 6px 8px;
-  border-radius: 5px;
-  font-size: 11px;
+
+  border-radius: 6px;
+
+  font-size: 10px;
+
   font-weight: 700;
 }
 
 .match-excellent {
   background: #ecfdf5;
+
   color: #047857;
 }
 
 .match-good {
   background: #eff6ff;
+
   color: #1d4ed8;
 }
 
 .match-medium {
   background: #fff7ed;
+
   color: #c2410c;
 }
 
 .match-low {
   background: #fef2f2;
+
   color: #b91c1c;
 }
 
@@ -752,62 +1665,57 @@
 
 .career-skill-group > strong {
   display: block;
-  margin-bottom: 6px;
-  color: #64748b;
-  font-size: 9px;
-}
 
-.career-skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  margin-bottom: 6px;
+
+  color: #64748b;
+
+  font-size: 9px;
 }
 
 .career-skill-tags span {
   padding: 4px 6px;
-  border-radius: 4px;
+
+  border-radius: 5px;
+
   font-size: 8px;
-}
-
-.matched-tag {
-  background: #ecfdf5;
-  color: #166534;
-}
-
-.improve-tag {
-  background: #fff7ed;
-  color: #9a3412;
-}
-
-.missing-tag {
-  background: #fef2f2;
-  color: #b91c1c;
 }
 
 .career-reason {
   margin-top: 13px;
+
   padding-top: 11px;
+
   border-top: 1px solid #f1f5f9;
 }
 
 .career-reason strong {
   color: #475569;
+
   font-size: 9px;
 }
 
 .career-reason p {
   margin: 4px 0 0;
+
   color: #64748b;
+
   font-size: 9px;
+
   line-height: 1.5;
 }
 
 
-/* =========================================
+/* =========================================================
    RESPONSIVE
-========================================= */
+========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
+
+  .resume-score-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .skills-analysis-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -817,7 +1725,9 @@
   }
 }
 
+
 @media (max-width: 760px) {
+
   .resume-header h1 {
     font-size: 25px;
   }
@@ -825,12 +1735,28 @@
   .resume-upload-card,
   .resume-extracted-card,
   .analysis-section,
-  .dsa-recommendation-section {
-    padding: 15px;
+  .dsa-recommendation-section,
+  .resume-score-section {
+    padding: 16px;
+  }
+
+  .resume-score-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .resume-score-circle {
+    align-self: center;
+  }
+
+  .resume-score-grid {
+    grid-template-columns: 1fr;
   }
 
   .analysis-action {
     align-items: flex-start;
+
     flex-direction: column;
   }
 
@@ -845,9 +1771,15 @@
   .skills-analysis-grid {
     grid-template-columns: 1fr;
   }
+
+  .resume-score-category {
+    align-items: flex-start;
+  }
 }
 
+
 @media (max-width: 500px) {
+
   .resume-dropzone {
     min-height: 135px;
   }
@@ -862,5 +1794,19 @@
 
   .career-match-percentage {
     margin-left: auto;
+  }
+
+  .resume-score-circle {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+  }
+
+  .resume-score-circle strong {
+    font-size: 26px;
+  }
+
+  .resume-score-header h2 {
+    font-size: 23px;
   }
 }

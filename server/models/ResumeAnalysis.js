@@ -13,13 +13,22 @@ const resumeAnalysisSchema = new mongoose.Schema(
             default: ""
         },
 
+        // ==========================================
+        // Skills
+        // ==========================================
+
         skills: [
             {
                 name: String,
                 level: String,
+                score: Number,
                 evidence: String
             }
         ],
+
+        // ==========================================
+        // Resume Sections
+        // ==========================================
 
         education: {
             type: [String],
@@ -41,6 +50,10 @@ const resumeAnalysisSchema = new mongoose.Schema(
             default: []
         },
 
+        // ==========================================
+        // Resume Insights
+        // ==========================================
+
         strengths: {
             type: [String],
             default: []
@@ -56,12 +69,66 @@ const resumeAnalysisSchema = new mongoose.Schema(
             default: []
         },
 
+        // ==========================================
+        // Career Matches
+        // ==========================================
+
         careerMatches: [
             {
                 career: String,
                 reason: String
             }
-        ]
+        ],
+
+        // ==========================================
+        // Resume Score
+        // ==========================================
+
+        resumeScore: {
+            type: Number,
+            default: 0
+        },
+
+        scoreCategory: {
+            type: String,
+            default: "Needs Improvement"
+        },
+
+        // ==========================================
+        // Resume Score Breakdown
+        // ==========================================
+
+        scoreBreakdown: {
+            skillStrength: {
+                type: Number,
+                default: 0
+            },
+
+            projectStrength: {
+                type: Number,
+                default: 0
+            },
+
+            experienceStrength: {
+                type: Number,
+                default: 0
+            },
+
+            educationStrength: {
+                type: Number,
+                default: 0
+            },
+
+            certificationStrength: {
+                type: Number,
+                default: 0
+            },
+
+            careerAlignment: {
+                type: Number,
+                default: 0
+            }
+        }
     },
     {
         timestamps: true

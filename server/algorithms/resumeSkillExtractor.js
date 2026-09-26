@@ -1,85 +1,67 @@
 // ==========================================
-// Rule-Based Resume Skill Extractor
+// Resume Skill Extractor
+// Domain Independent + Evidence Based
 // ==========================================
 
-// Skill aliases
+
+// ==========================================
+// Skill Dictionary
+// ==========================================
+
 const skillDictionary = {
 
-    "HTML": [
+    // ==========================================
+    // WEB / FULL STACK
+    // ==========================================
+
+    HTML: [
         "html",
-        "html5",
-        "hyper text markup language"
+        "html5"
     ],
 
-    "CSS": [
+    CSS: [
         "css",
-        "css3",
-        "cascading style sheets"
+        "css3"
     ],
 
-    "JavaScript": [
+    JavaScript: [
         "javascript",
-        "java script",
         "js"
     ],
 
-    "React": [
+    React: [
         "react",
         "reactjs",
         "react.js"
     ],
 
     "Node.js": [
-        "node",
+        "node.js",
         "nodejs",
-        "node.js"
+        "node js"
     ],
 
     "Express.js": [
         "express",
-        "expressjs",
-        "express.js"
+        "express.js",
+        "expressjs"
     ],
 
-    "MongoDB": [
+    MongoDB: [
         "mongodb",
-        "mongo db",
-        "mongo"
+        "mongo db"
     ],
 
-    "MySQL": [
-        "mysql",
-        "my sql"
+    MySQL: [
+        "mysql"
     ],
 
-    "Java": [
-        "java"
+    PostgreSQL: [
+        "postgresql",
+        "postgres"
     ],
 
-    "Python": [
-        "python"
-    ],
-
-    "C++": [
-        "c++",
-        "cpp"
-    ],
-
-    "C": [
-        "c programming",
-        "c language"
-    ],
-
-    "Git": [
-        "git"
-    ],
-
-    "GitHub": [
-        "github",
-        "git hub"
-    ],
-
-    "Bootstrap": [
+    Bootstrap: [
         "bootstrap"
     ],
 
@@ -89,34 +71,14 @@ const skillDictionary = {
     ],
 
     "Next.js": [
-        "nextjs",
         "next.js",
+        "nextjs",
         "next js"
     ],
 
-    "TypeScript": [
+    TypeScript: [
         "typescript",
-        "type script",
         "ts"
-    ],
-
-    "SQL": [
-        "sql",
-        "structured query language"
-    ],
-
-    "DSA": [
-        "dsa",
-        "data structures",
-        "data structure",
-        "algorithms",
-        "data structures and algorithms"
-    ],
-
-    "OOP": [
-        "oop",
-        "object oriented programming",
-        "object-oriented programming"
     ],
 
     "REST API": [
@@ -125,39 +87,133 @@ const skillDictionary = {
         "rest apis"
     ],
 
-    "JWT": [
+    GraphQL: [
+        "graphql"
+    ],
+
+    JWT: [
         "jwt",
         "json web token",
         "json web tokens"
     ],
 
-    "Docker": [
-        "docker"
+
+    // ==========================================
+    // PROGRAMMING / SOFTWARE DEVELOPMENT
+    // ==========================================
+
+    Programming: [
+        "programming",
+        "programming language",
+        "programming languages",
+        "coding",
+        "software programming"
     ],
 
-    "AWS": [
-        "aws",
-        "amazon web services"
+    Java: [
+        "java"
     ],
 
-    "Linux": [
-        "linux"
+    Python: [
+        "python"
     ],
 
-    "Figma": [
-        "figma"
+    "C++": [
+        "c++",
+        "cpp"
+    ],
+
+    C: [
+        "c"
+    ],
+
+    "C#": [
+        "c#",
+        "c sharp"
+    ],
+
+    Go: [
+        "golang",
+        "go language",
+        "go"
+    ],
+
+    PHP: [
+        "php"
+    ],
+
+    Ruby: [
+        "ruby"
+    ],
+
+    Kotlin: [
+        "kotlin"
+    ],
+
+    Swift: [
+        "swift"
+    ],
+
+    DSA: [
+        "dsa",
+        "data structures",
+        "data structures and algorithms",
+        "data structures & algorithms"
+    ],
+
+    OOP: [
+        "oop",
+        "object oriented programming",
+        "object-oriented programming"
+    ],
+
+    Algorithms: [
+        "algorithms",
+        "algorithm design",
+        "algorithm analysis"
+    ],
+
+    "System Design": [
+        "system design",
+        "software architecture",
+        "system architecture"
+    ],
+
+
+    // ==========================================
+    // VERSION CONTROL
+    // ==========================================
+
+    Git: [
+        "git"
+    ],
+
+    GitHub: [
+        "github",
+        "git hub"
+    ],
+
+    GitLab: [
+        "gitlab"
+    ],
+
+
+    // ==========================================
+    // AI / MACHINE LEARNING
+    // ==========================================
+
+    "Artificial Intelligence": [
+        "artificial intelligence",
+        "ai"
     ],
 
     "Machine Learning": [
         "machine learning",
-        "machine-learning",
         "ml"
     ],
 
-    "Artificial Intelligence": [
-        "artificial intelligence",
-        "artificial intelligence ai",
-        "ai"
+    "Deep Learning": [
+        "deep learning"
     ],
 
     "Generative AI": [
@@ -166,60 +222,343 @@ const skillDictionary = {
         "genai"
     ],
 
+    "Natural Language Processing": [
+        "natural language processing",
+        "nlp"
+    ],
+
+    "Computer Vision": [
+        "computer vision"
+    ],
+
+    TensorFlow: [
+        "tensorflow"
+    ],
+
+    PyTorch: [
+        "pytorch"
+    ],
+
+    "Scikit-learn": [
+        "scikit-learn",
+        "scikit learn",
+        "sklearn"
+    ],
+
+    Pandas: [
+        "pandas"
+    ],
+
+    NumPy: [
+        "numpy"
+    ],
+
+    "Hugging Face": [
+        "hugging face",
+        "huggingface"
+    ],
+
+    LLM: [
+        "llm",
+        "large language model",
+        "large language models"
+    ],
+
+    RAG: [
+        "rag",
+        "retrieval augmented generation",
+        "retrieval-augmented generation"
+    ],
+
     "Prompt Engineering": [
-        "prompt engineering",
-        "prompt design"
+        "prompt engineering"
+    ],
+
+    OpenAI: [
+        "openai",
+        "openai api"
+    ],
+
+    Gemini: [
+        "gemini",
+        "google gemini",
+        "gemini api"
+    ],
+
+
+    // ==========================================
+    // DATA SCIENCE
+    // ==========================================
+
+    SQL: [
+        "sql"
+    ],
+
+    Statistics: [
+        "statistics",
+        "statistical analysis",
+        "statistical modeling"
+    ],
+
+    "Data Analysis": [
+        "data analysis",
+        "data analytics",
+        "data analyst"
+    ],
+
+    "Data Visualization": [
+        "data visualization",
+        "data visualisation"
+    ],
+
+    PowerBI: [
+        "power bi",
+        "powerbi"
+    ],
+
+    Tableau: [
+        "tableau"
+    ],
+
+    Excel: [
+        "excel",
+        "microsoft excel"
+    ],
+
+
+    // ==========================================
+    // DEVOPS
+    // ==========================================
+
+    Docker: [
+        "docker"
+    ],
+
+    Kubernetes: [
+        "kubernetes",
+        "k8s"
+    ],
+
+    Jenkins: [
+        "jenkins"
+    ],
+
+    "CI/CD": [
+        "ci/cd",
+        "ci cd",
+        "continuous integration",
+        "continuous deployment",
+        "continuous delivery"
+    ],
+
+    Terraform: [
+        "terraform"
+    ],
+
+    "GitHub Actions": [
+        "github actions"
+    ],
+
+    Ansible: [
+        "ansible"
+    ],
+
+
+    // ==========================================
+    // CLOUD
+    // ==========================================
+
+    AWS: [
+        "aws",
+        "amazon web services"
+    ],
+
+    Azure: [
+        "azure",
+        "microsoft azure"
+    ],
+
+    GCP: [
+        "gcp",
+        "google cloud",
+        "google cloud platform"
+    ],
+
+    "Cloud Computing": [
+        "cloud computing",
+        "cloud technology",
+        "cloud services"
+    ],
+
+    Serverless: [
+        "serverless"
+    ],
+
+
+    // ==========================================
+    // LINUX / NETWORKING
+    // ==========================================
+
+    Linux: [
+        "linux"
+    ],
+
+    Networking: [
+        "networking",
+        "computer networking",
+        "network fundamentals"
+    ],
+
+    "Networking Fundamentals": [
+        "networking fundamentals",
+        "network fundamentals"
+    ],
+
+
+    // ==========================================
+    // CYBERSECURITY
+    // ==========================================
+
+    Cybersecurity: [
+        "cybersecurity",
+        "cyber security"
+    ],
+
+    "Network Security": [
+        "network security"
+    ],
+
+    "Ethical Hacking": [
+        "ethical hacking"
+    ],
+
+    "Penetration Testing": [
+        "penetration testing"
+    ],
+
+    OWASP: [
+        "owasp"
+    ],
+
+    Cryptography: [
+        "cryptography",
+        "cryptographic"
+    ],
+
+    SIEM: [
+        "siem"
+    ],
+
+    Authentication: [
+        "authentication",
+        "authorization"
+    ],
+
+
+    // ==========================================
+    // WEB DEVELOPMENT CATEGORY
+    // ==========================================
+
+    "Web Development": [
+        "web development",
+        "web developer",
+        "web development technologies",
+        "full stack web development",
+        "full-stack web development",
+        "frontend development",
+        "front-end development",
+        "backend development",
+        "back-end development"
+    ],
+
+
+    // ==========================================
+    // DESIGN
+    // ==========================================
+
+    Figma: [
+        "figma"
+    ],
+
+    UIUX: [
+        "ui/ux",
+        "ui ux",
+        "user interface",
+        "user experience"
     ]
 };
 
 
 // ==========================================
-// Normalize Resume Text
+// Normalize Text
 // ==========================================
 
 const normalizeText = (text) => {
 
-    return text
+    return String(text || "")
         .toLowerCase()
-        .replace(/[^\w\s+#.-]/g, " ")
+        .replace(/[^\w+#./\- ]+/g, " ")
         .replace(/\s+/g, " ")
         .trim();
 };
 
 
 // ==========================================
-// Check Skill Match
+// Escape Regex
+// ==========================================
+
+const escapeRegex = (text) => {
+
+    return text.replace(
+        /[.*+?^${}()|[\]\\]/g,
+        "\\$&"
+    );
+};
+
+
+// ==========================================
+// Check Skill Presence
+// Exact Word / Phrase Matching
 // ==========================================
 
 const containsSkill = (
     normalizedText,
-    alias
+    skill
 ) => {
 
-    const normalizedAlias =
-        alias
-            .toLowerCase()
-            .replace(/[^\w\s+#.-]/g, " ")
-            .replace(/\s+/g, " ")
-            .trim();
+    const aliases =
+        skillDictionary[skill] || [];
 
-    // Special handling for short skills
-    if (
-        ["c", "js", "ts", "ai", "ml"].includes(
-            normalizedAlias
-        )
-    ) {
 
-        const words =
-            normalizedText.split(" ");
+    return aliases.some(
+        alias => {
 
-        return words.includes(
-            normalizedAlias
-        );
-    }
+            const normalizedAlias =
+                normalizeText(alias);
 
-    return normalizedText.includes(
-        normalizedAlias
+
+            if (!normalizedAlias) {
+                return false;
+            }
+
+
+            const escapedAlias =
+                escapeRegex(
+                    normalizedAlias
+                );
+
+
+            const regex =
+                new RegExp(
+                    `(^|\\s)${escapedAlias}(?=\\s|$)`,
+                    "i"
+                );
+
+
+            return regex.test(
+                normalizedText
+            );
+        }
     );
 };
 
@@ -228,42 +567,30 @@ const containsSkill = (
 // Extract Skills
 // ==========================================
 
-const extractSkills = (resumeText) => {
-
-    if (
-        !resumeText ||
-        !resumeText.trim()
-    ) {
-        return [];
-    }
-
+const extractSkills = (
+    resumeText
+) => {
 
     const normalizedText =
         normalizeText(resumeText);
 
-
     const detectedSkills = [];
 
 
-    Object.entries(
+    Object.keys(
         skillDictionary
     ).forEach(
-        ([skillName, aliases]) => {
+        skill => {
 
-            const found =
-                aliases.some(
-                    (alias) =>
-                        containsSkill(
-                            normalizedText,
-                            alias
-                        )
-                );
-
-
-            if (found) {
+            if (
+                containsSkill(
+                    normalizedText,
+                    skill
+                )
+            ) {
 
                 detectedSkills.push(
-                    skillName
+                    skill
                 );
             }
         }
@@ -271,6 +598,454 @@ const extractSkills = (resumeText) => {
 
 
     return detectedSkills;
+};
+
+
+// ==========================================
+// Get Skill Contexts
+// ==========================================
+
+const getSkillContexts = (
+    resumeText,
+    skill
+) => {
+
+    const text =
+        String(resumeText || "");
+
+    const lowerText =
+        text.toLowerCase();
+
+    const contexts = [];
+
+    const aliases =
+        skillDictionary[skill] || [];
+
+
+    aliases.forEach(
+        alias => {
+
+            const aliasLower =
+                alias.toLowerCase();
+
+            let index =
+                lowerText.indexOf(
+                    aliasLower
+                );
+
+
+            while (
+                index !== -1
+            ) {
+
+                const start =
+                    Math.max(
+                        0,
+                        index - 220
+                    );
+
+
+                const end =
+                    Math.min(
+                        text.length,
+                        index +
+                            alias.length +
+                            220
+                    );
+
+
+                contexts.push(
+                    text.substring(
+                        start,
+                        end
+                    )
+                );
+
+
+                index =
+                    lowerText.indexOf(
+                        aliasLower,
+                        index + alias.length
+                    );
+            }
+        }
+    );
+
+
+    return contexts;
+};
+
+
+// ==========================================
+// Get Skill Evidence
+// ==========================================
+
+const getSkillEvidence = (
+    resumeText,
+    skill
+) => {
+
+    const text =
+        String(resumeText || "");
+
+    const lowerText =
+        text.toLowerCase();
+
+    const aliases =
+        skillDictionary[skill] || [];
+
+
+    const evidence = {
+
+        technicalSkills: false,
+
+        projectUsage: false,
+
+        experienceUsage: false,
+
+        certificationUsage: false,
+
+        explicitAdvanced: false,
+
+        explicitBeginner: false,
+
+        usageCount: 0
+    };
+
+
+    // ==========================================
+    // Technical Skills Keywords
+    // ==========================================
+
+    const technicalSkillsKeywords = [
+
+        "technical skills",
+        "technical skill",
+        "skills",
+        "core skills",
+        "programming skills",
+        "technologies",
+        "technical expertise"
+
+    ];
+
+
+    // ==========================================
+    // Project Keywords
+    // ==========================================
+
+    const projectKeywords = [
+
+        "project",
+        "projects",
+        "built",
+        "developed",
+        "implemented",
+        "created",
+        "application",
+        "app",
+        "platform",
+        "dashboard",
+        "website",
+        "system",
+        "model",
+        "trained"
+
+    ];
+
+
+    // ==========================================
+    // Experience Keywords
+    // ==========================================
+
+    const experienceKeywords = [
+
+        "experience",
+        "internship",
+        "intern",
+        "worked",
+        "professional",
+        "employment"
+
+    ];
+
+
+    // ==========================================
+    // Advanced Keywords
+    // ==========================================
+
+    const advancedKeywords = [
+
+        "advanced",
+        "advanced level",
+        "proficient",
+        "proficiency",
+        "expert",
+        "expertise",
+        "professional experience",
+        "production",
+        "deployed",
+        "architected",
+        "optimized"
+
+    ];
+
+
+    // ==========================================
+    // Beginner Keywords
+    // ==========================================
+
+    const beginnerKeywords = [
+
+        "beginner",
+        "basic",
+        "basics",
+        "learning",
+        "currently learning",
+        "familiar with",
+        "familiarity",
+        "introduction to",
+        "introductory"
+
+    ];
+
+
+    // ==========================================
+    // Analyze Every Skill Occurrence
+    // ==========================================
+
+    aliases.forEach(
+        alias => {
+
+            const aliasLower =
+                alias.toLowerCase();
+
+
+            let index =
+                lowerText.indexOf(
+                    aliasLower
+                );
+
+
+            while (
+                index !== -1
+            ) {
+
+                evidence.usageCount++;
+
+
+                const start =
+                    Math.max(
+                        0,
+                        index - 250
+                    );
+
+
+                const end =
+                    Math.min(
+                        text.length,
+                        index +
+                            alias.length +
+                            250
+                    );
+
+
+                const context =
+                    lowerText.substring(
+                        start,
+                        end
+                    );
+
+
+                // ==========================================
+                // Technical Skills
+                // ==========================================
+
+                if (
+                    technicalSkillsKeywords.some(
+                        keyword =>
+                            context.includes(
+                                keyword
+                            )
+                    )
+                ) {
+
+                    evidence.technicalSkills =
+                        true;
+                }
+
+
+                // ==========================================
+                // Project Usage
+                // ==========================================
+
+                if (
+                    projectKeywords.some(
+                        keyword =>
+                            context.includes(
+                                keyword
+                            )
+                    )
+                ) {
+
+                    evidence.projectUsage =
+                        true;
+                }
+
+
+                // ==========================================
+                // Experience Usage
+                // ==========================================
+
+                if (
+                    experienceKeywords.some(
+                        keyword =>
+                            context.includes(
+                                keyword
+                            )
+                    )
+                ) {
+
+                    evidence.experienceUsage =
+                        true;
+                }
+
+
+                // ==========================================
+                // Certification
+                // ==========================================
+
+                if (
+                    context.includes(
+                        "certification"
+                    ) ||
+                    context.includes(
+                        "certificate"
+                    )
+                ) {
+
+                    evidence.certificationUsage =
+                        true;
+                }
+
+
+                // ==========================================
+                // Explicit Advanced
+                // ==========================================
+
+                if (
+                    advancedKeywords.some(
+                        keyword =>
+                            context.includes(
+                                keyword
+                            )
+                    )
+                ) {
+
+                    evidence.explicitAdvanced =
+                        true;
+                }
+
+
+                // ==========================================
+                // Explicit Beginner
+                // ==========================================
+
+                if (
+                    beginnerKeywords.some(
+                        keyword =>
+                            context.includes(
+                                keyword
+                            )
+                    )
+                ) {
+
+                    evidence.explicitBeginner =
+                        true;
+                }
+
+
+                index =
+                    lowerText.indexOf(
+                        aliasLower,
+                        index + alias.length
+                    );
+            }
+        }
+    );
+
+
+    return evidence;
+};
+
+
+// ==========================================
+// Generate Human Readable Evidence
+// ==========================================
+
+const generateEvidenceText = (
+    skill,
+    evidence
+) => {
+
+    if (
+        evidence.explicitAdvanced
+    ) {
+
+        return (
+            `${skill} is explicitly described with ` +
+            `advanced or proficiency evidence.`
+        );
+    }
+
+
+    if (
+        evidence.projectUsage &&
+        evidence.experienceUsage
+    ) {
+
+        return (
+            `${skill} is demonstrated through ` +
+            `projects and practical experience.`
+        );
+    }
+
+
+    if (
+        evidence.projectUsage
+    ) {
+
+        return (
+            `${skill} is demonstrated through project work.`
+        );
+    }
+
+
+    if (
+        evidence.experienceUsage
+    ) {
+
+        return (
+            `${skill} is demonstrated through ` +
+            `internship or work experience.`
+        );
+    }
+
+
+    if (
+        evidence.technicalSkills
+    ) {
+
+        return (
+            `${skill} is listed in the technical ` +
+            `skills section.`
+        );
+    }
+
+
+    return (
+        `${skill} is mentioned in the resume.`
+    );
 };
 
 
@@ -283,87 +1058,188 @@ const estimateSkillLevel = (
     skill
 ) => {
 
-    const text =
-        normalizeText(resumeText);
+    const contexts =
+        getSkillContexts(
+            resumeText,
+            skill
+        );
 
 
-    const strongKeywords = [
-        "expert",
-        "advanced",
-        "proficient",
-        "experienced",
-        "developed",
-        "built",
-        "implemented",
-        "worked with",
-        "project"
-    ];
-
-
-    const beginnerKeywords = [
-        "beginner",
-        "basic",
-        "learning",
-        "familiar",
-        "currently learning"
-    ];
-
-
-    let strongScore = 0;
-    let beginnerScore = 0;
-
-
-    strongKeywords.forEach(
-        (keyword) => {
-
-            if (
-                text.includes(keyword)
-            ) {
-                strongScore++;
-            }
-        }
-    );
-
-
-    beginnerKeywords.forEach(
-        (keyword) => {
-
-            if (
-                text.includes(keyword)
-            ) {
-                beginnerScore++;
-            }
-        }
-    );
-
-
-    if (beginnerScore > strongScore) {
+    if (
+        contexts.length === 0
+    ) {
 
         return {
+
             level: "Beginner",
+
             score: 1
         };
     }
 
 
-    if (strongScore >= 2) {
+    const evidence =
+        getSkillEvidence(
+            resumeText,
+            skill
+        );
+
+
+    // ==========================================
+    // Explicit Beginner
+    // ==========================================
+
+    if (
+        evidence.explicitBeginner &&
+        !evidence.explicitAdvanced
+    ) {
 
         return {
+
+            level: "Beginner",
+
+            score: 1
+        };
+    }
+
+
+    // ==========================================
+    // Explicit Advanced
+    // ==========================================
+
+    if (
+        evidence.explicitAdvanced
+    ) {
+
+        return {
+
             level: "Advanced",
+
             score: 3
         };
     }
 
 
+    // ==========================================
+    // Project + Experience
+    // ==========================================
+
+    if (
+        evidence.projectUsage &&
+        evidence.experienceUsage
+    ) {
+
+        return {
+
+            level: "Intermediate",
+
+            score: 2
+        };
+    }
+
+
+    // ==========================================
+    // Project Usage
+    // ==========================================
+
+    if (
+        evidence.projectUsage
+    ) {
+
+        return {
+
+            level: "Intermediate",
+
+            score: 2
+        };
+    }
+
+
+    // ==========================================
+    // Experience Usage
+    // ==========================================
+
+    if (
+        evidence.experienceUsage
+    ) {
+
+        return {
+
+            level: "Intermediate",
+
+            score: 2
+        };
+    }
+
+
+    // ==========================================
+    // Technical Skills Section
+    // ==========================================
+
+    if (
+        evidence.technicalSkills
+    ) {
+
+        return {
+
+            level: "Intermediate",
+
+            score: 2
+        };
+    }
+
+
+    // ==========================================
+    // DSA / OOP / Programming
+    // ==========================================
+
+    if (
+        skill === "DSA" ||
+        skill === "OOP" ||
+        skill === "Programming"
+    ) {
+
+        return {
+
+            level: "Intermediate",
+
+            score: 2
+        };
+    }
+
+
+    // ==========================================
+    // Web Development
+    // ==========================================
+
+    if (
+        skill === "Web Development"
+    ) {
+
+        return {
+
+            level: "Intermediate",
+
+            score: 2
+        };
+    }
+
+
+    // ==========================================
+    // Default
+    // ==========================================
+
     return {
-        level: "Intermediate",
-        score: 2
+
+        level: "Beginner",
+
+        score: 1
     };
 };
 
 
 // ==========================================
-// Extract Skills With Levels
+// Extract Skills With Levels + Evidence
 // ==========================================
 
 const extractSkillsWithLevels = (
@@ -371,28 +1247,48 @@ const extractSkillsWithLevels = (
 ) => {
 
     const skills =
-        extractSkills(resumeText);
+        extractSkills(
+            resumeText
+        );
 
 
     return skills.map(
-        (skill) => {
+        skill => {
 
-            const skillLevel =
+            const result =
                 estimateSkillLevel(
                     resumeText,
                     skill
                 );
 
 
+            const evidence =
+                getSkillEvidence(
+                    resumeText,
+                    skill
+                );
+
+
+            const evidenceText =
+                generateEvidenceText(
+                    skill,
+                    evidence
+                );
+
+
             return {
 
-                name: skill,
+                name:
+                    skill,
 
                 level:
-                    skillLevel.level,
+                    result.level,
 
                 score:
-                    skillLevel.score
+                    result.score,
+
+                evidence:
+                    evidenceText
             };
         }
     );
@@ -414,4 +1310,5 @@ module.exports = {
     estimateSkillLevel,
 
     extractSkillsWithLevels
+
 };

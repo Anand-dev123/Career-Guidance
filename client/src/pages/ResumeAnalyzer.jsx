@@ -13,8 +13,9 @@ import {
   TrendingUp,
   Lightbulb,
   Route,
-  ExternalLink,
   X,
+  FolderKanban,
+  BarChart3,
 } from "lucide-react";
 
 import Sidebar from "../components/Sidebar";
@@ -24,34 +25,20 @@ import api from "../services/api";
 import "./ResumeAnalyzer.css";
 
 const ResumeAnalyzer = () => {
-  const [selectedFile, setSelectedFile] =
-    useState(null);
-
-  const [uploading, setUploading] =
-    useState(false);
-
-  const [analyzing, setAnalyzing] =
-    useState(false);
-
-  const [error, setError] =
-    useState("");
-
-  const [result, setResult] =
-    useState(null);
-
-  const [analysis, setAnalysis] =
-    useState(null);
-
-  const [careerRecommendations, setCareerRecommendations] =
-    useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [error, setError] = useState("");
+  const [result, setResult] = useState(null);
+  const [analysis, setAnalysis] = useState(null);
+  const [careerRecommendations, setCareerRecommendations] = useState([]);
 
   // ==========================================
   // File Selection
   // ==========================================
 
   const handleFileChange = (event) => {
-    const file =
-      event.target.files[0];
+    const file = event.target.files[0];
 
     setError("");
     setResult(null);
@@ -69,19 +56,13 @@ const ResumeAnalyzer = () => {
     ];
 
     if (!allowedTypes.includes(file.type)) {
-      setError(
-        "Only PDF and DOCX files are allowed."
-      );
-
+      setError("Only PDF and DOCX files are allowed.");
       setSelectedFile(null);
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      setError(
-        "File size must be less than 5 MB."
-      );
-
+      setError("File size must be less than 5 MB.");
       setSelectedFile(null);
       return;
     }
@@ -95,10 +76,7 @@ const ResumeAnalyzer = () => {
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      setError(
-        "Please select a resume first."
-      );
-
+      setError("Please select a resume first.");
       return;
     }
 
@@ -109,35 +87,22 @@ const ResumeAnalyzer = () => {
       setAnalysis(null);
       setCareerRecommendations([]);
 
-      const formData =
-        new FormData();
+      const formData = new FormData();
 
-      formData.append(
-        "resume",
-        selectedFile
-      );
+      formData.append("resume", selectedFile);
 
-      const response =
-        await api.post(
-          "/resumes/upload",
-          formData,
-          {
-            headers: {
-              "Content-Type":
-                "multipart/form-data",
-            },
-          }
-        );
+      const response = await api.post("/resumes/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      setResult(
-        response.data
-      );
+      setResult(response.data);
     } catch (error) {
       console.error(error);
 
       setError(
-        error.response?.data?.message ||
-          "Failed to upload resume."
+        error.response?.data?.message || "Failed to upload resume."
       );
     } finally {
       setUploading(false);
@@ -150,10 +115,7 @@ const ResumeAnalyzer = () => {
 
   const handleAIAnalysis = async () => {
     if (!result?.text) {
-      setError(
-        "Please upload your resume first."
-      );
-
+      setError("Please upload your resume first.");
       return;
     }
 
@@ -163,22 +125,15 @@ const ResumeAnalyzer = () => {
       setAnalysis(null);
       setCareerRecommendations([]);
 
-      const response =
-        await api.post(
-          "/resumes/analyze",
-          {
-            text: result.text,
-            fileName: result.fileName,
-          }
-        );
+      const response = await api.post("/resumes/analyze", {
+        text: result.text,
+        fileName: result.fileName,
+      });
 
-      setAnalysis(
-        response.data.analysis
-      );
+      setAnalysis(response.data.analysis);
 
       setCareerRecommendations(
-        response.data
-          .careerRecommendations || []
+        response.data.careerRecommendations || []
       );
     } catch (error) {
       console.error(error);
@@ -205,7 +160,7 @@ const ResumeAnalyzer = () => {
   };
 
   // ==========================================
-  // Match Class
+  // Career Match Class
   // ==========================================
 
   const getMatchClass = (percentage) => {
@@ -225,50 +180,95 @@ const ResumeAnalyzer = () => {
   };
 
   // ==========================================
+  // Resume Score Class
+  // ==========================================
+
+  const getScoreClass = (score) => {
+    if (score >= 80) {
+      return "resume-score-excellent";
+    }
+
+    if (score >= 65) {
+      return "resume-score-good";
+    }
+
+    if (score >= 50) {
+      return "resume-score-developing";
+    }
+
+    return "resume-score-needs-improvement";
+  };
+
+  // ==========================================
   // Analysis Section
   // ==========================================
 
-  const AnalysisSection = ({
-    icon: Icon,
-    title,
-    children,
-  }) => {
+  const AnalysisSection = ({ icon: Icon, title, children }) => {
     return (
       <section className="analysis-section">
-
         <div className="analysis-section-header">
-
           <div className="analysis-section-icon">
             <Icon size={16} />
           </div>
 
-          <h3>
-            {title}
-          </h3>
-
+          <h3>{title}</h3>
         </div>
 
         <div className="analysis-section-content">
           {children}
         </div>
-
       </section>
+    );
+  };
+
+  // ==========================================
+  // Score Breakdown Card
+  // ==========================================
+
+  const ScoreCard = ({
+    icon: Icon,
+    title,
+    value,
+    description,
+  }) => {
+    return (
+      <div className="resume-score-item">
+        <div className="score-card-top">
+          <div className="score-card-icon">
+            <Icon size={17} />
+          </div>
+
+          <div className="score-card-title">
+            <span>{title}</span>
+            <strong>{value}%</strong>
+          </div>
+        </div>
+
+        <div className="resume-score-progress">
+          <div
+            className="resume-score-progress-bar"
+            style={{
+              width: `${value}%`,
+            }}
+          />
+        </div>
+
+        <p>{description}</p>
+      </div>
     );
   };
 
   return (
     <div className="app-layout">
-
       <Sidebar />
 
       <div className="main-area">
-
         <Navbar />
 
         <main className="page-content resume-page">
 
           {/* ==================================
-              HEADER
+              PAGE HEADER
           ================================== */}
 
           <header className="resume-header">
@@ -278,15 +278,11 @@ const ResumeAnalyzer = () => {
               Career Profile
             </div>
 
-            <h1>
-              Resume Analyzer
-            </h1>
+            <h1>Resume Analyzer</h1>
 
             <p>
-              Upload your resume and get
-              AI-powered insights about your
-              skills, career fit and improvement
-              areas.
+              Upload your resume and get AI-powered insights
+              about your skills, career fit and improvement areas.
             </p>
 
           </header>
@@ -298,13 +294,8 @@ const ResumeAnalyzer = () => {
 
           {error && (
             <div className="resume-error">
-
               <AlertCircle size={17} />
-
-              <span>
-                {error}
-              </span>
-
+              <span>{error}</span>
             </div>
           )}
 
@@ -322,13 +313,10 @@ const ResumeAnalyzer = () => {
               </div>
 
               <div>
-                <h2>
-                  Upload your resume
-                </h2>
+                <h2>Upload your resume</h2>
 
                 <p>
-                  Upload a PDF or DOCX file up
-                  to 5 MB.
+                  Upload a PDF or DOCX file up to 5 MB.
                 </p>
               </div>
 
@@ -340,9 +328,7 @@ const ResumeAnalyzer = () => {
               <input
                 type="file"
                 accept=".pdf,.docx"
-                onChange={
-                  handleFileChange
-                }
+                onChange={handleFileChange}
               />
 
               <div className="dropzone-icon">
@@ -374,29 +360,19 @@ const ResumeAnalyzer = () => {
                   </div>
 
                   <div>
-                    <strong>
-                      {selectedFile.name}
-                    </strong>
+                    <strong>{selectedFile.name}</strong>
 
                     <span>
-                      {(
-                        selectedFile.size /
-                        1024 /
-                        1024
-                      ).toFixed(2)}{" "}
-                      MB
+                      {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                     </span>
                   </div>
 
                 </div>
 
-
                 <button
                   type="button"
                   className="remove-file"
-                  onClick={
-                    clearSelectedFile
-                  }
+                  onClick={clearSelectedFile}
                 >
                   <X size={15} />
                 </button>
@@ -408,10 +384,7 @@ const ResumeAnalyzer = () => {
             <button
               className="primary-resume-button"
               onClick={handleUpload}
-              disabled={
-                !selectedFile ||
-                uploading
-              }
+              disabled={!selectedFile || uploading}
             >
               {uploading ? (
                 <>
@@ -448,8 +421,7 @@ const ResumeAnalyzer = () => {
                   </strong>
 
                   <span>
-                    Your resume text is ready
-                    for AI analysis.
+                    Your resume text is ready for AI analysis.
                   </span>
                 </div>
 
@@ -459,23 +431,15 @@ const ResumeAnalyzer = () => {
               <div className="resume-stat-row">
 
                 <div className="resume-stat">
-                  <span>
-                    File
-                  </span>
+                  <span>File</span>
 
-                  <strong>
-                    {result.fileName}
-                  </strong>
+                  <strong>{result.fileName}</strong>
                 </div>
 
                 <div className="resume-stat">
-                  <span>
-                    Characters extracted
-                  </span>
+                  <span>Characters extracted</span>
 
-                  <strong>
-                    {result.textLength}
-                  </strong>
+                  <strong>{result.textLength}</strong>
                 </div>
 
               </div>
@@ -487,9 +451,7 @@ const ResumeAnalyzer = () => {
                   View extracted resume text
                 </summary>
 
-                <div>
-                  {result.text}
-                </div>
+                <div>{result.text}</div>
 
               </details>
 
@@ -502,17 +464,14 @@ const ResumeAnalyzer = () => {
                   </strong>
 
                   <span>
-                    Gemini AI will analyze your
-                    resume and generate career
-                    recommendations.
+                    Gemini AI will analyze your resume and
+                    generate career recommendations.
                   </span>
                 </div>
 
                 <button
                   className="ai-analysis-button"
-                  onClick={
-                    handleAIAnalysis
-                  }
+                  onClick={handleAIAnalysis}
                   disabled={analyzing}
                 >
                   {analyzing ? (
@@ -541,6 +500,8 @@ const ResumeAnalyzer = () => {
           {analysis && (
             <section className="analysis-container">
 
+              {/* ANALYSIS HEADER */}
+
               <div className="analysis-header">
 
                 <div>
@@ -555,14 +516,189 @@ const ResumeAnalyzer = () => {
                   </h2>
 
                   <p>
-                    Key information and career
-                    insights extracted from your
-                    resume.
+                    Key information and career insights
+                    extracted from your resume.
                   </p>
 
                 </div>
 
               </div>
+
+
+              {/* ==================================
+                  RESUME SCORE
+              ================================== */}
+
+              {analysis.resumeScore !== undefined && (
+                <section className="resume-score-section">
+
+                  {/* SCORE HEADER */}
+
+                  <div className="resume-score-header">
+
+                    <div className="resume-score-intro">
+
+                      <div className="section-eyebrow">
+                        Resume Evaluation
+                      </div>
+
+                      <h2>
+                        Resume Score
+                      </h2>
+
+                      <p>
+                        Overall evaluation based on your skills,
+                        projects, experience, education,
+                        certifications and career alignment.
+                      </p>
+
+                    </div>
+
+
+                    {/* SCORE CIRCLE */}
+
+                    <div
+                      className={`resume-score-circle ${getScoreClass(
+                        analysis.resumeScore
+                      )}`}
+                    >
+                      <strong>
+                        {analysis.resumeScore}
+                      </strong>
+
+                      <span>
+                        /100
+                      </span>
+                    </div>
+
+                  </div>
+
+
+                  {/* OVERALL STATUS */}
+
+                  <div className="resume-score-category">
+
+                    <div className="score-status-info">
+
+                      <span>
+                        Overall status
+                      </span>
+
+                      <small>
+                        Resume evaluation result
+                      </small>
+
+                    </div>
+
+                    <strong
+                      className={getScoreClass(
+                        analysis.resumeScore
+                      )}
+                    >
+                      {analysis.scoreCategory ||
+                        "Needs Improvement"}
+                    </strong>
+
+                  </div>
+
+
+                  {/* SCORE BREAKDOWN */}
+
+                  {analysis.scoreBreakdown && (
+                    <>
+
+                      <div className="score-breakdown-heading">
+
+                        <div className="breakdown-title">
+
+                          <div className="breakdown-icon">
+                            <BarChart3 size={17} />
+                          </div>
+
+                          <div>
+                            <strong>
+                              Score Breakdown
+                            </strong>
+
+                            <span>
+                              Detailed evaluation of your resume
+                            </span>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+
+                      <div className="resume-score-grid">
+
+                        <ScoreCard
+                          icon={Code2}
+                          title="Skill Strength"
+                          value={
+                            analysis.scoreBreakdown
+                              .skillStrength ?? 0
+                          }
+                          description="Based on your technical skills and proficiency levels."
+                        />
+
+                        <ScoreCard
+                          icon={FolderKanban}
+                          title="Project Strength"
+                          value={
+                            analysis.scoreBreakdown
+                              .projectStrength ?? 0
+                          }
+                          description="Based on the projects and practical work in your resume."
+                        />
+
+                        <ScoreCard
+                          icon={BriefcaseBusiness}
+                          title="Experience Strength"
+                          value={
+                            analysis.scoreBreakdown
+                              .experienceStrength ?? 0
+                          }
+                          description="Based on internships and professional experience."
+                        />
+
+                        <ScoreCard
+                          icon={GraduationCap}
+                          title="Education Strength"
+                          value={
+                            analysis.scoreBreakdown
+                              .educationStrength ?? 0
+                          }
+                          description="Based on your academic background and education."
+                        />
+
+                        <ScoreCard
+                          icon={Award}
+                          title="Certification Strength"
+                          value={
+                            analysis.scoreBreakdown
+                              .certificationStrength ?? 0
+                          }
+                          description="Based on certifications and achievements."
+                        />
+
+                        <ScoreCard
+                          icon={Target}
+                          title="Career Alignment"
+                          value={
+                            analysis.scoreBreakdown
+                              .careerAlignment ?? 0
+                          }
+                          description="Based on alignment between your skills and career paths."
+                        />
+
+                      </div>
+
+                    </>
+                  )}
+
+                </section>
+              )}
 
 
               {/* ==================================
@@ -575,7 +711,6 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.skills?.length > 0 ? (
-
                   <div className="skills-analysis-grid">
 
                     {analysis.skills.map(
@@ -586,6 +721,7 @@ const ResumeAnalyzer = () => {
                         >
 
                           <div>
+
                             <strong>
                               {skill.name}
                             </strong>
@@ -595,6 +731,7 @@ const ResumeAnalyzer = () => {
                                 {skill.evidence}
                               </span>
                             )}
+
                           </div>
 
                           <span className="skill-level">
@@ -606,7 +743,6 @@ const ResumeAnalyzer = () => {
                     )}
 
                   </div>
-
                 ) : (
                   <div className="analysis-empty">
                     No skills detected.
@@ -626,8 +762,8 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.education?.length > 0 ? (
-
                   <ul className="analysis-list">
+
                     {analysis.education.map(
                       (item, index) => (
                         <li key={index}>
@@ -635,12 +771,11 @@ const ResumeAnalyzer = () => {
                         </li>
                       )
                     )}
-                  </ul>
 
+                  </ul>
                 ) : (
                   <div className="analysis-empty">
-                    No education information
-                    detected.
+                    No education information detected.
                   </div>
                 )}
 
@@ -657,8 +792,8 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.experience?.length > 0 ? (
-
                   <ul className="analysis-list">
+
                     {analysis.experience.map(
                       (item, index) => (
                         <li key={index}>
@@ -666,12 +801,11 @@ const ResumeAnalyzer = () => {
                         </li>
                       )
                     )}
-                  </ul>
 
+                  </ul>
                 ) : (
                   <div className="analysis-empty">
-                    No experience information
-                    detected.
+                    No experience information detected.
                   </div>
                 )}
 
@@ -688,8 +822,8 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.projects?.length > 0 ? (
-
                   <ul className="analysis-list">
+
                     {analysis.projects.map(
                       (item, index) => (
                         <li key={index}>
@@ -697,8 +831,8 @@ const ResumeAnalyzer = () => {
                         </li>
                       )
                     )}
-                  </ul>
 
+                  </ul>
                 ) : (
                   <div className="analysis-empty">
                     No projects detected.
@@ -718,8 +852,8 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.certifications?.length > 0 ? (
-
                   <ul className="analysis-list">
+
                     {analysis.certifications.map(
                       (item, index) => (
                         <li key={index}>
@@ -727,8 +861,8 @@ const ResumeAnalyzer = () => {
                         </li>
                       )
                     )}
-                  </ul>
 
+                  </ul>
                 ) : (
                   <div className="analysis-empty">
                     No certifications detected.
@@ -748,8 +882,8 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.strengths?.length > 0 ? (
-
                   <ul className="analysis-list positive-list">
+
                     {analysis.strengths.map(
                       (item, index) => (
                         <li key={index}>
@@ -757,8 +891,8 @@ const ResumeAnalyzer = () => {
                         </li>
                       )
                     )}
-                  </ul>
 
+                  </ul>
                 ) : (
                   <div className="analysis-empty">
                     No strengths detected.
@@ -769,39 +903,154 @@ const ResumeAnalyzer = () => {
 
 
               {/* ==================================
-                  MISSING SKILLS
+                  CAREER SKILL GAP
               ================================== */}
 
               <AnalysisSection
                 icon={Target}
-                title="Skills to Improve"
+                title="Career Skill Gap"
               >
 
-                {analysis.missingSkills?.length > 0 ? (
+                {careerRecommendations.length > 0 ? (
 
-                  <div className="improvement-list">
+                  <div className="career-skill-gap">
 
-                    {analysis.missingSkills.map(
-                      (item, index) => (
-                        <div
-                          key={index}
-                          className="improvement-item"
-                        >
-                          <Lightbulb size={14} />
-                          <span>
-                            {item}
-                          </span>
+                    {/* MATCHED SKILLS */}
+
+                    {careerRecommendations[0]
+                      .matchedSkills?.length > 0 && (
+
+                      <div className="skill-gap-group">
+
+                        <div className="skill-gap-title matched-title">
+
+                          <CheckCircle2 size={15} />
+
+                          <strong>
+                            Matched Skills
+                          </strong>
+
                         </div>
-                      )
+
+                        <div className="career-skill-tags">
+
+                          {careerRecommendations[0]
+                            .matchedSkills.map(
+                              (skill, index) => (
+                                <span
+                                  key={index}
+                                  className="matched-tag"
+                                >
+                                  {skill.skill}
+                                </span>
+                              )
+                            )}
+
+                        </div>
+
+                      </div>
+                    )}
+
+
+                    {/* SKILLS TO IMPROVE */}
+
+                    {careerRecommendations[0]
+                      .skillsToImprove?.length > 0 && (
+
+                      <div className="skill-gap-group">
+
+                        <div className="skill-gap-title improve-title">
+
+                          <Lightbulb size={15} />
+
+                          <strong>
+                            Skills to Improve
+                          </strong>
+
+                        </div>
+
+                        <div className="career-skill-tags">
+
+                          {careerRecommendations[0]
+                            .skillsToImprove.map(
+                              (skill, index) => (
+                                <span
+                                  key={index}
+                                  className="improve-tag"
+                                >
+                                  {skill.skill}
+                                </span>
+                              )
+                            )}
+
+                        </div>
+
+                      </div>
+                    )}
+
+
+                    {/* MISSING SKILLS */}
+
+                    {careerRecommendations[0]
+                      .missingSkills?.length > 0 && (
+
+                      <div className="skill-gap-group">
+
+                        <div className="skill-gap-title missing-title">
+
+                          <Target size={15} />
+
+                          <strong>
+                            Missing Skills
+                          </strong>
+
+                        </div>
+
+                        <div className="career-skill-tags">
+
+                          {careerRecommendations[0]
+                            .missingSkills.map(
+                              (skill, index) => (
+                                <span
+                                  key={index}
+                                  className="missing-tag"
+                                >
+                                  {skill}
+                                </span>
+                              )
+                            )}
+
+                        </div>
+
+                      </div>
+                    )}
+
+
+                    {/* TOP CAREER */}
+
+                    {careerRecommendations[0]?.career && (
+
+                      <div className="skill-gap-career-note">
+
+                        <strong>
+                          Based on:
+                        </strong>
+
+                        <span>
+                          {careerRecommendations[0].career}
+                        </span>
+
+                      </div>
                     )}
 
                   </div>
 
                 ) : (
-                  <div className="analysis-empty success">
-                    No major missing skills
-                    detected.
+
+                  <div className="analysis-empty">
+                    No career skill-gap analysis available.
                   </div>
+
                 )}
 
               </AnalysisSection>
@@ -817,8 +1066,8 @@ const ResumeAnalyzer = () => {
               >
 
                 {analysis.suggestions?.length > 0 ? (
-
                   <ul className="analysis-list">
+
                     {analysis.suggestions.map(
                       (item, index) => (
                         <li key={index}>
@@ -826,8 +1075,8 @@ const ResumeAnalyzer = () => {
                         </li>
                       )
                     )}
-                  </ul>
 
+                  </ul>
                 ) : (
                   <div className="analysis-empty">
                     No suggestions available.
@@ -852,6 +1101,7 @@ const ResumeAnalyzer = () => {
 
                     {analysis.careerMatches.map(
                       (item, index) => (
+
                         <div
                           key={index}
                           className="career-match-item"
@@ -862,6 +1112,7 @@ const ResumeAnalyzer = () => {
                           </div>
 
                           <div>
+
                             <strong>
                               {item.career}
                             </strong>
@@ -869,18 +1120,22 @@ const ResumeAnalyzer = () => {
                             <p>
                               {item.reason}
                             </p>
+
                           </div>
 
                         </div>
+
                       )
                     )}
 
                   </div>
 
                 ) : (
+
                   <div className="analysis-empty">
                     No career matches found.
                   </div>
+
                 )}
 
               </AnalysisSection>
@@ -899,6 +1154,7 @@ const ResumeAnalyzer = () => {
                   </div>
 
                   <div>
+
                     <div className="section-eyebrow">
                       DSA Matching
                     </div>
@@ -908,10 +1164,11 @@ const ResumeAnalyzer = () => {
                     </h2>
 
                     <p>
-                      Career matches calculated from
-                      your resume skills and the
-                      platform's DSA matching logic.
+                      Career matches calculated from your
+                      resume skills and the platform's
+                      DSA matching logic.
                     </p>
+
                   </div>
 
                 </div>
@@ -923,6 +1180,7 @@ const ResumeAnalyzer = () => {
 
                     {careerRecommendations.map(
                       (career, index) => (
+
                         <article
                           key={index}
                           className="dsa-career-card"
@@ -955,8 +1213,8 @@ const ResumeAnalyzer = () => {
                           </div>
 
 
-                          {career.matchedSkills
-                            ?.length > 0 && (
+                          {career.matchedSkills?.length > 0 && (
+
                             <div className="career-skill-group">
 
                               <strong>
@@ -966,18 +1224,15 @@ const ResumeAnalyzer = () => {
                               <div className="career-skill-tags">
 
                                 {career.matchedSkills.map(
-                                  (
-                                    skill,
-                                    skillIndex
-                                  ) => (
+                                  (skill, skillIndex) => (
+
                                     <span
-                                      key={
-                                        skillIndex
-                                      }
+                                      key={skillIndex}
                                       className="matched-tag"
                                     >
                                       {skill.skill}
                                     </span>
+
                                   )
                                 )}
 
@@ -987,8 +1242,8 @@ const ResumeAnalyzer = () => {
                           )}
 
 
-                          {career.skillsToImprove
-                            ?.length > 0 && (
+                          {career.skillsToImprove?.length > 0 && (
+
                             <div className="career-skill-group">
 
                               <strong>
@@ -998,18 +1253,15 @@ const ResumeAnalyzer = () => {
                               <div className="career-skill-tags">
 
                                 {career.skillsToImprove.map(
-                                  (
-                                    skill,
-                                    skillIndex
-                                  ) => (
+                                  (skill, skillIndex) => (
+
                                     <span
-                                      key={
-                                        skillIndex
-                                      }
+                                      key={skillIndex}
                                       className="improve-tag"
                                     >
                                       {skill.skill}
                                     </span>
+
                                   )
                                 )}
 
@@ -1019,8 +1271,8 @@ const ResumeAnalyzer = () => {
                           )}
 
 
-                          {career.missingSkills
-                            ?.length > 0 && (
+                          {career.missingSkills?.length > 0 && (
+
                             <div className="career-skill-group">
 
                               <strong>
@@ -1030,18 +1282,15 @@ const ResumeAnalyzer = () => {
                               <div className="career-skill-tags">
 
                                 {career.missingSkills.map(
-                                  (
-                                    skill,
-                                    skillIndex
-                                  ) => (
+                                  (skill, skillIndex) => (
+
                                     <span
-                                      key={
-                                        skillIndex
-                                      }
+                                      key={skillIndex}
                                       className="missing-tag"
                                     >
                                       {skill}
                                     </span>
+
                                   )
                                 )}
 
@@ -1052,6 +1301,7 @@ const ResumeAnalyzer = () => {
 
 
                           {career.recommendationReason && (
+
                             <div className="career-reason">
 
                               <strong>
@@ -1059,15 +1309,14 @@ const ResumeAnalyzer = () => {
                               </strong>
 
                               <p>
-                                {
-                                  career.recommendationReason
-                                }
+                                {career.recommendationReason}
                               </p>
 
                             </div>
                           )}
 
                         </article>
+
                       )
                     )}
 
@@ -1076,8 +1325,7 @@ const ResumeAnalyzer = () => {
                 ) : (
 
                   <div className="analysis-empty">
-                    No DSA career recommendations
-                    available.
+                    No DSA career recommendations available.
                   </div>
 
                 )}
@@ -1088,7 +1336,6 @@ const ResumeAnalyzer = () => {
           )}
 
         </main>
-
       </div>
     </div>
   );
